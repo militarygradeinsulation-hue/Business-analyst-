@@ -84,9 +84,9 @@ export default function App() {
               <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
             <span>
-              Daemon<sup>®</sup>{' '}
+              AETHERIS{' '}
               <span className="hidden sm:inline font-mono text-xs font-normal text-[#9a9a9a] ml-1">
-                // AETHERIS OS
+                // FORENSIC OS
               </span>
             </span>
           </a>
@@ -200,7 +200,7 @@ export default function App() {
           </li>
         </ol>
         <div className="menu-foot">
-          <span>DAEMON® × AETHERIS FORENSIC OS · MODEL VERSION 6</span>
+          <span>AETHERIS FORENSIC OS · MODEL VERSION 6</span>
           <span>GOLDEN REPORT · MINDPRINT · ASK INTROS · COLLECTIVE BRAIN</span>
         </div>
       </div>
@@ -600,7 +600,7 @@ export default function App() {
             <div className="logo-mark" style={{ width: 16, height: 16 }} aria-hidden="true">
               <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
-            <span>DAEMON® × AETHERIS INTEGRATED FORENSIC METHODOLOGY OS</span>
+            <span>AETHERIS INTEGRATED FORENSIC METHODOLOGY OS</span>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <button
