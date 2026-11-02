@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <script data-obsidian-memory-shim="1">(function(){
+if (window.ObsidianMemory) return;
+var NS = 'obs_export_mem:' + (function(){
+  var s = document.title + location.pathname, h = 0;
+  for (var i = 0; i < s.length; i++) { h = ((h << 5) - h) + s.charCodeAt(i); h |= 0; }
+  return Math.abs(h).toString(36);
+})() + ':';
+var listeners = [];
+function safeParse(raw) { try { return raw == null ? null : JSON.parse(raw); } catch (e) { return null; } }
+function notify(key, value) { listeners.forEach(function (fn) { try { fn(key, value); } catch (e) {} }); }
+window.addEventListener('storage', function (e) {
+  if (!e.key || e.key.indexOf(NS) !== 0) return;
+  notify(e.key.slice(NS.length), safeParse(e.newValue));
+});
+window.ObsidianMemory = {
+  set: function (key, value) {
+    try { localStorage.setItem(NS + key, JSON.stringify(value)); } catch (e) {}
+    notify(key, value);
+    return Promise.resolve(true);
+  },
+  get: function (key) {
+    try { return Promise.resolve(safeParse(localStorage.getItem(NS + key))); }
+    catch (e) { return Promise.resolve(null); }
+  },
+  list: function () {
+    var out = [];
+    try {
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf(NS) === 0) out.push({ key: k.slice(NS.length), value: safeParse(localStorage.getItem(k)) });
+      }
+    } catch (e) {}
+    return Promise.resolve(out);
+  },
+  delete: function (key) {
+    try { localStorage.removeItem(NS + key); } catch (e) {}
+    notify(key, null);
+    return Promise.resolve(true);
+  },
+  onChange: function (fn) { if (typeof fn === 'function') listeners.push(fn); }
+};
+})();</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daemon® — We Build AI Systems for Businesses</title>
+    <meta name="description" content="Daemon is an AI systems studio. We build real, production-ready AI systems that automate work, improve performance, and deliver measurable business results." />
+    <meta property="og:title" content="Daemon® — We Build AI Systems for Businesses" />
+    <meta property="og:description" content="Daemon is an AI systems studio. We build real, production-ready AI systems that automate work, improve performance, and deliver measurable business results." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
