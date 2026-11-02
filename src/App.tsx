@@ -15,11 +15,11 @@ import {
   X,
 } from 'lucide-react';
 import { UrlScannerCommandView } from './components/UrlScannerCommandView';
+import { AetherisCodexView, AETHERIS_CODEX_URL } from './components/AetherisCodexView';
 import {
-  compileCompanyScanReport,
   compilePersonScanReport,
-  CompanyScanReport,
-  PersonScanReport,
+  type CompanyScanReport,
+  type PersonScanReport,
 } from './lib/urlScannerBrain';
 
 const MANUSCRIPT_PDF_PATH =
@@ -32,6 +32,7 @@ const MINDPRINT_PDF_PATH =
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isCodexModalOpen, setIsCodexModalOpen] = useState<boolean>(false);
   const [activePdfModal, setActivePdfModal] = useState<{
     title: string;
     path: string;
@@ -53,6 +54,7 @@ export default function App() {
       if (e.key === 'Escape') {
         setIsMenuOpen(false);
         setActivePdfModal(null);
+        setIsCodexModalOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -108,10 +110,10 @@ export default function App() {
             </button>
             <button
               type="button"
-              onClick={() => scrollToSection('benchmarks')}
-              className="hover:text-white transition-colors cursor-pointer"
+              onClick={() => scrollToSection('codex')}
+              className="hover:text-white transition-colors cursor-pointer text-white/90"
             >
-              03. Proof Cases
+              03. The Codex (Method)
             </button>
             <button
               type="button"
@@ -128,6 +130,14 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollToSection('codex')}
+              className="daemon-chip hidden xl:inline-flex items-center gap-1.5"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>3D Codex</span>
+            </button>
             <button
               type="button"
               onClick={() => scrollToSection('intake')}
@@ -178,9 +188,21 @@ export default function App() {
             <button
               type="button"
               className="menu-link"
-              onClick={() => scrollToSection('benchmarks')}
+              onClick={() => scrollToSection('codex')}
             >
-              Benchmark Case Studies
+              The Codex // Method Behind Methodology
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              className="menu-link"
+              onClick={() => {
+                setIsMenuOpen(false);
+                setIsCodexModalOpen(true);
+              }}
+            >
+              Open 3D Flipbook Studio
             </button>
           </li>
           <li>
@@ -459,138 +481,9 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 03: BENCHMARK CASE STUDIES & REFERENCE REPORTS (.cases / .case / .metric) */}
-        <section id="benchmarks" className="sec">
-          <div className="wrap">
-            <div className="sec-head">
-              <div>
-                <div className="eyebrow">
-                  <span className="badge">
-                    <i></i>
-                    <span>03 // VERIFIED FORENSIC BENCHMARKS</span>
-                  </span>
-                </div>
-                <h2 className="h2">
-                  Reference <span className="soft">Dossiers</span>
-                </h2>
-              </div>
-              <p className="lede">
-                Click any benchmark below to load its live interactive scan into the console above
-                or inspect the original reference PDF.
-              </p>
-            </div>
+        {/* SECTION 03: THE METHOD BEHIND THE METHODOLOGY — 3D FLIPBOOK CODEX */}
+        <AetherisCodexView onOpenModal={() => setIsCodexModalOpen(true)} />
 
-            <div className="cases">
-              {/* Case 1: Discflo Golden Report */}
-              <div className="case span-4 p-7 space-y-6">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="badge">
-                    <i></i>
-                    <span>GOLDEN REPORT · 22 CHAPTERS · MODEL V6</span>
-                  </span>
-                  <span className="font-mono text-xs text-[#9a9a9a]">SCAN ID: 18ABCD83</span>
-                </div>
-
-                <div>
-                  <div className="metric text-rose-400">
-                    $357K–$440K<small>/YR LOSS</small>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mt-3">
-                    Discflo Pumps (https://discflo.com/) — Complete Forensic Audit
-                  </h3>
-                  <p className="text-sm text-[#9a9a9a] mt-1 max-w-2xl">
-                    13 uniquely priced leaks across 20 detected findings and 157 weighted signals.
-                    Includes Top 10 Active Leaks, Brand Blueprint, 12 Ready-to-Publish Posts, 30-Day
-                    Content Schedule, and 30/60/90 Remediation Plan.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const report = compileCompanyScanReport({ rawUrl: 'https://discflo.com/' });
-                      setCompanyScan(report);
-                      scrollToSection('intake');
-                    }}
-                    className="btn-skeu"
-                  >
-                    <span className="dot" />
-                    <span>Load Discflo Scan in Console</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActivePdfModal({
-                        title: 'Golden Report Complete — discflo.com (PDF)',
-                        path: GOLDEN_REPORT_PDF_PATH,
-                      })
-                    }
-                    className="daemon-chip py-3 px-4"
-                  >
-                    Inspect Original 65-Page PDF
-                  </button>
-                </div>
-              </div>
-
-              {/* Case 2: Tiffany Spahl-Nally Mindprint */}
-              <div className="case span-2 p-7 space-y-6">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="badge">
-                    <i></i>
-                    <span>MINDPRINT · 12 SECTIONS</span>
-                  </span>
-                  <span className="font-mono text-xs text-[#9a9a9a]">75 SIGNALS</span>
-                </div>
-
-                <div>
-                  <div className="metric text-white">
-                    68<small>/100 CONFIDENCE</small>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mt-3">
-                    Tiffany Spahl-Nally (CRO · Strategic Advisor)
-                  </h3>
-                  <p className="text-sm text-[#9a9a9a] mt-1">
-                    Multi-source OSINT Mindprint across 10 public sources, ESTJ hypothesis, Thinking
-                    Core Graph, and ACH Forensic Casebook.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const report = compilePersonScanReport({
-                        rawUrl: 'https://www.linkedin.com/in/tiffany-spahl-nally',
-                        SupplementaryBioText:
-                          'Positive Thinker | Smile Spreader | Beach Lover · Chief Revenue Officer (CRO) · Strategic Advisor · Director of Sales, Americas',
-                        activeCompanyScan: companyScan ?? undefined,
-                      });
-                      setPersonScan(report);
-                      scrollToSection('intake');
-                    }}
-                    className="btn-skeu"
-                  >
-                    <span className="dot" />
-                    <span>Load Mindprint</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActivePdfModal({
-                        title: 'Mindprint Intelligence Report (PDF)',
-                        path: MINDPRINT_PDF_PATH,
-                      })
-                    }
-                    className="daemon-chip py-3 px-3"
-                  >
-                    View PDF
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* DAEMON FOOTER */}
@@ -603,6 +496,14 @@ export default function App() {
             <span>AETHERIS INTEGRATED FORENSIC METHODOLOGY OS</span>
           </div>
           <div className="flex flex-wrap items-center gap-4">
+            <button
+              type="button"
+              onClick={() => scrollToSection('codex')}
+              className="hover:text-white transition-colors cursor-pointer text-white"
+            >
+              The Codex (3D Flipbook)
+            </button>
+            <span>·</span>
             <button
               type="button"
               onClick={() =>
@@ -684,6 +585,57 @@ export default function App() {
                 src={activePdfModal.path}
                 title={activePdfModal.title}
                 className="w-full h-full border-0"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 3D AETHERIS CODEX FLIPBOOK STUDIO MODAL */}
+      {isCodexModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-6 animate-view-enter"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Aetheris 3D Digital Flipbook Codex Studio"
+        >
+          <div className="w-full max-w-7xl h-[94vh] rounded-2xl border border-white/20 bg-[#0a0a0a] flex flex-col overflow-hidden shadow-2xl">
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10 bg-[#070707]">
+              <div className="flex items-center gap-2.5 font-mono text-xs text-white">
+                <BookOpen className="w-4 h-4 text-white" />
+                <span className="font-semibold uppercase tracking-wider">
+                  The Aetheris Codex // The Method Behind The Methodology
+                </span>
+                <span className="hidden sm:inline text-[#9a9a9a] text-[11px]">
+                  (Interactive 3D Digital Flipbook by Joseph Toney)
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href={AETHERIS_CODEX_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="daemon-chip inline-flex items-center gap-1.5"
+                >
+                  <span>Open Direct</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setIsCodexModalOpen(false)}
+                  aria-label="Close Codex Studio"
+                  className="daemon-chip p-1.5"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 bg-black relative">
+              <iframe
+                src={AETHERIS_CODEX_URL}
+                title="Aetheris — 3D Interactive Forensic Methodology Codex"
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
             </div>
           </div>

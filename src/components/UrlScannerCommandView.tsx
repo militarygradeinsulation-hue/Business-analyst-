@@ -29,6 +29,8 @@ import { MindprintGraphView } from './MindprintGraphView';
 import { AskIntrosView } from './AskIntrosView';
 import { CollectiveBrainView } from './CollectiveBrainView';
 import { MindprintIntelligenceReportView } from './MindprintIntelligenceReportView';
+import { FinanceBento } from './ui/finance-bento';
+import { generateForensicBentoData } from '../lib/forensicBentoAdapter';
 
 interface UrlScannerCommandViewProps {
   companyScan: CompanyScanReport | null;
@@ -63,6 +65,8 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
   // Expandable sections for Company and Person scans
   const [showGoldenReportComplete, setShowGoldenReportComplete] = useState<boolean>(true);
   const [showFullMindprintDossier, setShowFullMindprintDossier] = useState<boolean>(true);
+  const [showVisualBento, setShowVisualBento] = useState<boolean>(true);
+  const [showPreviewBento, setShowPreviewBento] = useState<boolean>(false);
   const [activeDeepDive, setActiveDeepDive] = useState<
     'none' | 'ledger' | 'graph' | 'askintros' | 'collective'
   >('none');
@@ -517,6 +521,18 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
             >
               aetheris.tech + Joseph Toney
             </button>
+            <button
+              type="button"
+              onClick={() => setShowPreviewBento((p) => !p)}
+              className="daemon-chip inline-flex items-center gap-1.5"
+            >
+              <span>{showPreviewBento ? 'Hide Bento Visuals' : 'Preview Bento Visuals'}</span>
+              {showPreviewBento ? (
+                <ChevronUp className="w-3.5 h-3.5" />
+              ) : (
+                <ChevronDown className="w-3.5 h-3.5" />
+              )}
+            </button>
             {hasAnyResult && (
               <button
                 type="button"
@@ -554,6 +570,32 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
           </button>
         </div>
       </div>
+
+      {/* PREVIEW BENCHMARK BENTO (SHOWN WHEN REQUESTED PRIOR TO SCAN) */}
+      {showPreviewBento && !hasAnyResult && (
+        <div className="p-4 sm:p-6 rounded-2xl border border-white/10 bg-[#070707] space-y-4 animate-view-enter">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <span className="badge">
+                <i></i>
+                <span>BENCHMARK VISUAL BENTO · DISCFLO CORPORATION ($1.38M–$1.66M)</span>
+              </span>
+            </div>
+            <span className="font-mono text-xs text-[#9a9a9a]">
+              Interactive SVG Stream · Allocation Gauge · Cash Flow Waves
+            </span>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/90 p-2 sm:p-4">
+            <FinanceBento
+              data={generateForensicBentoData()}
+              title="Discflo Corporation"
+              subtitle="Canonical Ledger v6 Benchmark Model · 13 Priced Leaks · F Grade"
+              credit={false}
+              className="w-full"
+            />
+          </div>
+        </div>
+      )}
 
       {/* RESULTS ANCHOR & SECTION */}
       <div id="scan-results-anchor" />
@@ -729,6 +771,25 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                 <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
                   <button
                     type="button"
+                    onClick={() => setShowVisualBento((s) => !s)}
+                    aria-expanded={showVisualBento}
+                    className="btn-skeu"
+                  >
+                    <span className="dot" />
+                    <span>
+                      {showVisualBento
+                        ? 'Collapse Visual Bento Dashboard'
+                        : 'Expand Visual Bento Dashboard'}
+                    </span>
+                    {showVisualBento ? (
+                      <ChevronUp className="w-4 h-4" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4" />
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
                     onClick={() => setShowGoldenReportComplete((s) => !s)}
                     aria-expanded={showGoldenReportComplete}
                     className="btn-skeu"
@@ -788,6 +849,32 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                     )}
                   </button>
                 </div>
+
+                {/* INTERACTIVE FORENSIC BENTO CHARTS (VISUAL DASHBOARD) */}
+                {showVisualBento && (
+                  <div className="space-y-4 pt-4 border-t border-white/10 animate-view-enter">
+                    <div className="flex flex-wrap items-center justify-between gap-3 px-1">
+                      <div className="flex items-center gap-2">
+                        <span className="badge">
+                          <i></i>
+                          <span>FORENSIC VISUAL BENTO · NET EXPOSURE &amp; FLOW CHARTS</span>
+                        </span>
+                      </div>
+                      <span className="font-mono text-xs text-[#9a9a9a]">
+                        Interactive SVG Graphs · Allocation Gauge · Cash Flow Waves · Weekly Telemetry
+                      </span>
+                    </div>
+                    <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/90 p-2 sm:p-4">
+                      <FinanceBento
+                        data={generateForensicBentoData({ companyScan, personScan })}
+                        title={goldenDossier.companyName}
+                        subtitle={`Model v6 Canonical Ledger · ${goldenDossier.pricedLeaksCount} Priced Leaks · ${goldenDossier.overallGrade} Friction Rating`}
+                        credit={false}
+                        className="w-full"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* EXPANDED 22-CHAPTER GOLDEN REPORT COMPLETE VIEW */}

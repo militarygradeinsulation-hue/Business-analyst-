@@ -13,6 +13,8 @@ import {
 } from 'lucide-react';
 import { CompanyScanReport } from '../lib/urlScannerBrain';
 import { buildGoldenReportFullDossier } from '../lib/goldenReportComplete';
+import { FinanceBento } from './ui/finance-bento';
+import { generateForensicBentoData } from '../lib/forensicBentoAdapter';
 
 interface GoldenReportCompleteViewProps {
   companyScan: CompanyScanReport;
@@ -40,6 +42,7 @@ export const GoldenReportCompleteView: React.FC<GoldenReportCompleteViewProps> =
   });
   const [showAllPosts, setShowAllPosts] = useState<boolean>(false);
   const [showFullSchedule, setShowFullSchedule] = useState<boolean>(false);
+  const [showBentoInReport, setShowBentoInReport] = useState<boolean>(true);
 
   const toggleChapter = (slug: string) => {
     setExpandedChapters((prev) => ({ ...prev, [slug]: !prev[slug] }));
@@ -132,6 +135,41 @@ export const GoldenReportCompleteView: React.FC<GoldenReportCompleteViewProps> =
             separate leak total · IMPLEMENTATION INVESTMENT: Not included in annual revenue loss total
             · RECOVERY SCENARIO: Not a second annual revenue loss total.
           </div>
+        </div>
+
+        {/* INTERACTIVE FORENSIC VISUAL CHARTS (BENTO DASHBOARD) */}
+        <div className="space-y-4 pt-1">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <span className="badge">
+                <i></i>
+                <span>FORENSIC VISUAL BENTO · EXPOSURE STREAM &amp; CASH FLOW WAVES</span>
+              </span>
+              <span className="font-mono text-xs text-[#9a9a9a]">
+                Live Multimodal Charts for Written Audit
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowBentoInReport((s) => !s)}
+              className="daemon-chip inline-flex items-center gap-1.5"
+            >
+              <span>{showBentoInReport ? 'Hide Visual Charts' : 'Show Visual Charts'}</span>
+              {showBentoInReport ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+            </button>
+          </div>
+
+          {showBentoInReport && (
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/90 p-2 sm:p-4">
+              <FinanceBento
+                data={generateForensicBentoData({ companyScan })}
+                title={dossier.companyName}
+                subtitle={`Model v6 Canonical Ledger · ${dossier.pricedLeaksCount} Priced Leaks · ${dossier.overallGrade} Friction Rating`}
+                credit={false}
+                className="w-full"
+              />
+            </div>
+          )}
         </div>
 
         {/* SECTION FILTER TABS */}
