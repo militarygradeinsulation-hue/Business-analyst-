@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-anchor: none;
   -webkit-text-size-adjust: 100%;
   background: var(--black);
   color: var(--white);
@@ -33,6 +34,7 @@ html {
 
 body {
   margin: 0;
+  overflow-anchor: none;
   background: var(--black);
   color: var(--white);
   font-family: var(--sans);

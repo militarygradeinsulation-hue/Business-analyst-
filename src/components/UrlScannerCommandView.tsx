@@ -131,15 +131,6 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
     });
   };
 
-  const scrollToResults = () => {
-    setTimeout(() => {
-      const el = document.getElementById('scan-results-anchor');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 80);
-  };
-
   const handleRunCompanyScan = async (targetUrl: string) => {
     const effectiveUrl = targetUrl.trim() || 'https://discflo.com/';
     if (!targetUrl.trim()) {
@@ -151,7 +142,6 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
       const immediateReport = compileCompanyScanReport({ rawUrl: effectiveUrl });
       onCompanyScanComplete(immediateReport);
       setShowGoldenReportComplete(true);
-      scrollToResults();
 
       const enriched = await fetchCompanyScan(effectiveUrl);
       onCompanyScanComplete(enriched);
@@ -189,7 +179,6 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
       });
       onPersonScanComplete(immediateReport);
       setShowFullMindprintDossier(true);
-      scrollToResults();
 
       const enriched = await fetchPersonScan(
         effectiveUrl,
@@ -247,7 +236,6 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
       onBothScansComplete(immediateComp, immediatePers);
       setShowGoldenReportComplete(true);
       setShowFullMindprintDossier(true);
-      scrollToResults();
 
       // Enrich both concurrently in parallel from server OSINT
       const [enrichedComp, enrichedPers] = await Promise.all([
