@@ -780,7 +780,7 @@ export const MindprintIntelligenceReportView: React.FC<MindprintIntelligenceRepo
                       <span className="text-slate-400">Possible friction: </span>
                       {sf.possibleFriction}
                     </div>
-                    <div className="text-emerald-400">
+                    <div className="text-white font-medium">
                       <span className="text-slate-400">Better approach: </span>
                       {sf.betterApproach}
                     </div>
@@ -1139,7 +1139,7 @@ export const MindprintIntelligenceReportView: React.FC<MindprintIntelligenceRepo
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
               <div className="p-4 rounded-lg border border-white/10 bg-[#0B0D14] space-y-1.5">
-                <div className="text-[10px] text-emerald-400 uppercase font-bold">DO</div>
+                <div className="text-[10px] text-white uppercase font-bold">DO</div>
                 {intelligence.meetingStrategy.doList.map((d, i) => (
                   <div key={i} className="text-slate-200">
                     › {d}
@@ -1196,7 +1196,7 @@ export const MindprintIntelligenceReportView: React.FC<MindprintIntelligenceRepo
                 </div>
                 <div className="p-3.5 rounded-lg border border-white/15 bg-[#0B0D14] text-xs">
                   <div className="text-[10px] text-slate-400 uppercase">NEXT STEP</div>
-                  <div className="text-emerald-400 font-semibold mt-0.5">
+                  <div className="text-white font-semibold mt-0.5">
                     {intelligence.meetingStrategy.nextStep}
                   </div>
                 </div>

@@ -261,7 +261,7 @@ export const MindprintGraphView: React.FC<MindprintGraphViewProps> = ({ personSc
                       <span
                         className={`shrink-0 ${
                           node.status === 'validated'
-                            ? 'text-emerald-400'
+                            ? 'text-white font-semibold'
                             : node.status === 'hypothesis'
                             ? 'text-amber-400'
                             : 'text-sky-400'
@@ -461,7 +461,7 @@ export const MindprintGraphView: React.FC<MindprintGraphViewProps> = ({ personSc
                     </td>
                     <td className="py-3 px-4 text-xs font-mono">
                       {edge.confirmed ? (
-                        <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                        <span className="text-white flex items-center gap-1">
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Confirmed Edge</span>
                         </span>

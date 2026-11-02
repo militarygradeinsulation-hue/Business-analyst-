@@ -174,7 +174,7 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
             <div className="text-xs text-slate-500 dark:text-slate-400">
               Chapter Allocation Invariant (∑ L_i = ∑ L_c)
             </div>
-            <div className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mt-1.5 flex items-center gap-1.5">
+            <div className="text-sm font-semibold text-white mt-1.5 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 shrink-0" />
               <span>
                 {reconciled.invariants.chapterSumMatchesActiveSum
@@ -191,7 +191,7 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
             <div className="text-xs text-slate-500 dark:text-slate-400">
               Root-Cause Fingerprint Uniqueness
             </div>
-            <div className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mt-1.5 flex items-center gap-1.5">
+            <div className="text-sm font-semibold text-white mt-1.5 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 shrink-0" />
               <span>
                 {reconciled.invariants.uniqueRootCauseFingerprints
@@ -340,7 +340,7 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
               </div>
               <div>
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">Verified Avoided Overtime</div>
-                <div className="text-base font-bold text-emerald-500 tabular-nums">
+                <div className="text-base font-bold text-white tabular-nums">
                   {formatUSD(caseEval.f03.avoidedOvertime)}
                 </div>
               </div>
@@ -351,7 +351,7 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
           <div className="p-5 rounded-lg border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#0B0D14] space-y-3">
             <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
               <span>Case F04 · Process D (Work-to-Invoice Join)</span>
-              <span className="text-emerald-500">Unbilled / Cash Collection</span>
+              <span className="text-[#c4c4c4]">Unbilled / Cash Collection</span>
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               Unbilled Completed Service Deliveries
@@ -368,7 +368,7 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
               </div>
               <div>
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">Cash Collected</div>
-                <div className="text-base font-bold text-emerald-500 tabular-nums">
+                <div className="text-base font-bold text-white tabular-nums">
                   {formatUSD(caseEval.f04.cashCollected)}
                 </div>
               </div>
@@ -475,7 +475,7 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
                   label: '4. Pre-Cost Economic Benefit',
                   amount: caseEval.bridge.preCostBenefit,
                   barPct: Math.min(100, (caseEval.bridge.preCostBenefit / 440_000) * 100),
-                  color: 'bg-emerald-500',
+                  color: 'bg-white/80',
                   note: caseParams.includeCashCollectionInIncome
                     ? 'Includes $55k unrecognized income'
                     : 'Excludes $55k AR cash collection',
@@ -498,7 +498,7 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
                 <div key={row.label} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-medium text-slate-800 dark:text-slate-200">
-                      {row.label}
+                       {row.label}
                     </span>
                     <span className="font-mono font-bold tabular-nums text-slate-900 dark:text-white">
                       {formatUSD(row.amount)}
@@ -570,12 +570,12 @@ export const GoldenLedgerView: React.FC<GoldenLedgerViewProps> = ({ companyScan 
                                 }
                                 className={`w-full py-2.5 px-2 rounded font-bold tabular-nums transition-all cursor-pointer ${
                                   isSelected
-                                    ? 'ring-2 ring-amber-400 bg-amber-500 text-slate-950'
+                                    ? 'ring-2 ring-white/60 bg-white text-slate-950'
                                     : cellVal >= 100_000
-                                    ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/30'
+                                    ? 'bg-white/20 text-white hover:bg-white/30'
                                     : cellVal >= 50_000
-                                    ? 'bg-emerald-500/10 text-slate-800 dark:text-slate-200 hover:bg-emerald-500/20'
-                                    : 'bg-amber-500/10 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20'
+                                    ? 'bg-white/10 text-slate-200 hover:bg-white/20'
+                                    : 'bg-white/5 text-[#9a9a9a] hover:bg-white/10'
                                 }`}
                               >
                                 ${Math.round(cellVal / 1000)}k

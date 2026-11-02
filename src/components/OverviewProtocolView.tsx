@@ -191,10 +191,10 @@ export const OverviewProtocolView: React.FC<OverviewProtocolViewProps> = ({
                 className="text-left p-3.5 rounded-lg border border-slate-200 dark:border-white/10 hover:border-amber-500/60 bg-white dark:bg-[#131622] transition-all group cursor-pointer"
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <Handshake className="w-4 h-4 text-emerald-400" />
+                  <Handshake className="w-4 h-4 text-white" />
                   <span className="text-[11px] font-mono text-slate-400">03</span>
                 </div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-emerald-400 transition-colors">
+                <div className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-slate-200 transition-colors">
                   Ask Intros
                 </div>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">

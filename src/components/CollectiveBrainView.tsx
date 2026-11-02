@@ -81,7 +81,7 @@ export const CollectiveBrainView: React.FC = () => {
     }
     return {
       level: 'Class V · Audit-Ready Realized Cash / Profit Recovery',
-      tone: 'text-emerald-400',
+      tone: 'text-white font-bold',
       explanation:
         'All mandatory observation, baseline, post-intervention comparison, and general-ledger transaction links (Items 2, 4, 5, 8, 11, 12) are verified.',
     };
@@ -244,7 +244,7 @@ export const CollectiveBrainView: React.FC = () => {
               </div>
               <div>
                 <div className="text-[10px] text-slate-400">≥3 Gate</div>
-                <div className="font-bold text-emerald-500">
+                <div className="font-bold text-white">
                   {liftMetrics.meetsScreeningRule ? 'Passed' : 'Suppressed'}
                 </div>
               </div>

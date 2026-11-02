@@ -360,7 +360,7 @@ export const AskIntrosView: React.FC<AskIntrosViewProps> = ({ personScan }) => {
               onClick={() => setConsentGranted((c) => !c)}
               className={`px-3 py-1.5 rounded-md text-xs font-mono font-semibold transition-colors cursor-pointer ${
                 consentGranted
-                  ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 border border-emerald-500/40'
+                  ? 'bg-white/20 text-white border border-white/40'
                   : 'bg-rose-500/20 text-rose-600 dark:text-rose-300 border border-rose-500/40'
               }`}
             >
@@ -479,7 +479,7 @@ export const AskIntrosView: React.FC<AskIntrosViewProps> = ({ personScan }) => {
               </div>
               <div className="p-2.5 rounded border border-slate-200 dark:border-white/10 bg-white dark:bg-[#11131C]">
                 <div className="text-[10px] text-slate-400">E_normalized</div>
-                <div className="font-bold text-emerald-500 tabular-nums">
+                <div className="font-bold text-white tabular-nums">
                   {formatUSD(overlapFixture.normalizedExposure)}
                 </div>
               </div>
@@ -556,7 +556,7 @@ export const AskIntrosView: React.FC<AskIntrosViewProps> = ({ personScan }) => {
 
             <div className="p-3.5 rounded border border-slate-200 dark:border-white/10 bg-white dark:bg-[#11131C] text-xs font-mono">
               {requesterOptIn && counterpartyOptIn ? (
-                <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                <div className="text-white flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>Server Stamp Assigned: 2026-11-02T13:40:00Z · Outcome Spine Active</span>
                 </div>
@@ -594,13 +594,13 @@ export const AskIntrosView: React.FC<AskIntrosViewProps> = ({ personScan }) => {
                 label: 'N_O · Qualifying reported outcome',
                 count: outcomeFollowUpDay === 7 ? 2 : outcomeFollowUpDay === 30 ? 7 : 12,
                 pct: outcomeFollowUpDay === 7 ? 2 : outcomeFollowUpDay === 30 ? 7 : 12,
-                color: 'bg-emerald-500',
+                color: 'bg-white/80',
               },
               {
                 label: 'Commercial outcomes supported by transaction records',
                 count: outcomeFollowUpDay === 7 ? 1 : outcomeFollowUpDay === 30 ? 4 : 8,
                 pct: outcomeFollowUpDay === 7 ? 1 : outcomeFollowUpDay === 30 ? 4 : 8,
-                color: 'bg-emerald-400',
+                color: 'bg-white',
               },
             ].map((stage) => (
               <div key={stage.label} className="space-y-1">

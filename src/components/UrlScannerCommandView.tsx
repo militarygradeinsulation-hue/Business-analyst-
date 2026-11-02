@@ -279,7 +279,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                 <i></i>
                 <span>01 // COMPANY URL SCAN · GOLDEN REPORT V6</span>
               </span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-emerald-400 shrink-0">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-white/80 shrink-0">
                 22-Chapter Audit
               </span>
             </div>
@@ -369,7 +369,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                 <i></i>
                 <span>02 // PERSON URL SCAN · MINDPRINT OSINT</span>
               </span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-emerald-400 shrink-0">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-white/80 shrink-0">
                 12-Section Dossier
               </span>
             </div>
@@ -492,7 +492,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
               <i></i>
               <span>03 // SYNCHRONIZED DUAL-VECTOR EXECUTION</span>
             </span>
-            <span className="font-mono text-[11px] uppercase tracking-wider text-emerald-400">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-white/80">
               Company Audit + Executive Mindprint + Butler Brief
             </span>
           </div>
@@ -716,7 +716,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
 
                   <div className="p-4 rounded border border-white/10 bg-[#070707]">
                     <div className="text-xs text-[#9a9a9a]">Modeled Net Profit Bridge</div>
-                    <div className="text-lg font-bold text-emerald-400 tabular-nums mt-1">
+                    <div className="text-lg font-bold text-white tabular-nums mt-1">
                       {formatUSD(companyScan.profitBridgeSummary.bridge.netEconomicBenefit)} (
                       {companyScan.profitBridgeSummary.bridge.roiPercent}% ROI)
                     </div>
