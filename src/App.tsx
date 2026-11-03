@@ -15,7 +15,11 @@ import {
   X,
 } from 'lucide-react';
 import { UrlScannerCommandView } from './components/UrlScannerCommandView';
-import { AetherisCodexView, AETHERIS_CODEX_URL } from './components/AetherisCodexView';
+import { ProofStripWalkthrough } from './components/ProofStripWalkthrough';
+import { AlternativesComparisonView } from './components/AlternativesComparisonView';
+import { DeterministicScopeEngine } from './components/DeterministicScopeEngine';
+import { PricingLadderView } from './components/PricingLadderView';
+import { ReviewsAndCouncilView } from './components/ReviewsAndCouncilView';
 import {
   compilePersonScanReport,
   type CompanyScanReport,
@@ -32,7 +36,7 @@ const MINDPRINT_PDF_PATH =
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [isCodexModalOpen, setIsCodexModalOpen] = useState<boolean>(false);
+
   const [activePdfModal, setActivePdfModal] = useState<{
     title: string;
     path: string;
@@ -54,7 +58,7 @@ export default function App() {
       if (e.key === 'Escape') {
         setIsMenuOpen(false);
         setActivePdfModal(null);
-        setIsCodexModalOpen(false);
+
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -87,65 +91,74 @@ export default function App() {
             </div>
             <span>
               AETHERIS{' '}
-              <span className="hidden sm:inline font-mono text-xs font-normal text-[#9a9a9a] ml-1">
+              <span className="hidden sm:inline font-mono text-xs font-semibold text-zinc-300 ml-1">
                 // FORENSIC OS
               </span>
             </span>
           </a>
 
-          <div className="hidden md:flex items-center gap-6 font-mono text-xs uppercase tracking-wider text-[#9a9a9a]">
+          <div className="hidden lg:flex items-center gap-5 font-mono text-xs uppercase tracking-wider text-zinc-200 font-semibold">
             <button
               type="button"
-              onClick={() => scrollToSection('intake')}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('intake');
+              }}
               className="hover:text-white transition-colors cursor-pointer"
             >
-              01. URL Scanner
+              01. Free Scan
             </button>
             <button
               type="button"
-              onClick={() => scrollToSection('architecture')}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('what-we-fix');
+              }}
               className="hover:text-white transition-colors cursor-pointer"
             >
-              02. Architecture
+              02. What We Fix
             </button>
             <button
               type="button"
-              onClick={() => scrollToSection('codex')}
-              className="hover:text-white transition-colors cursor-pointer text-white/90"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('quote-builder');
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
             >
-              03. The Codex (Method)
+              03. Quote Builder
             </button>
             <button
               type="button"
-              onClick={() =>
-                setActivePdfModal({
-                  title: 'Golden Report Complete (discflo.com)',
-                  path: GOLDEN_REPORT_PDF_PATH,
-                })
-              }
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('pricing');
+              }}
               className="hover:text-white transition-colors cursor-pointer"
             >
-              04. Golden Report PDF
+              04. Pricing &amp; Guarantee
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('reviews-and-council');
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              05. Sample Fixes
             </button>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               type="button"
-              onClick={() => scrollToSection('codex')}
-              className="daemon-chip hidden xl:inline-flex items-center gap-1.5"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>3D Codex</span>
-            </button>
-            <button
-              type="button"
               onClick={() => scrollToSection('intake')}
               className="btn-skeu hidden sm:inline-flex"
-              style={{ padding: '10px 16px', fontSize: '11px' }}
+              style={{ padding: '10px 18px', fontSize: '11.5px' }}
             >
               <span className="dot" />
-              <span>Launch Scanner</span>
+              <span>Scan My Business Free</span>
             </button>
 
             <button
@@ -170,27 +183,12 @@ export default function App() {
             <button
               type="button"
               className="menu-link"
-              onClick={() => scrollToSection('intake')}
+              onClick={() => {
+                setIsMenuOpen(false);
+                scrollToSection('intake');
+              }}
             >
-              Forensic URL Intake
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              className="menu-link"
-              onClick={() => scrollToSection('architecture')}
-            >
-              System Architecture
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              className="menu-link"
-              onClick={() => scrollToSection('codex')}
-            >
-              The Codex // Method Behind Methodology
+              Scan My Business Free
             </button>
           </li>
           <li>
@@ -199,10 +197,10 @@ export default function App() {
               className="menu-link"
               onClick={() => {
                 setIsMenuOpen(false);
-                setIsCodexModalOpen(true);
+                scrollToSection('what-we-fix');
               }}
             >
-              Open 3D Flipbook Studio
+              What We Fix (Alternatives)
             </button>
           </li>
           <li>
@@ -211,13 +209,34 @@ export default function App() {
               className="menu-link"
               onClick={() => {
                 setIsMenuOpen(false);
-                setActivePdfModal({
-                  title: 'Aetheris Integrated Forensic Methodology (Book Edition)',
-                  path: MANUSCRIPT_PDF_PATH,
-                });
+                scrollToSection('quote-builder');
               }}
             >
-              Methodology Manuscript
+              Autonomous Quote Builder
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              className="menu-link"
+              onClick={() => {
+                setIsMenuOpen(false);
+                scrollToSection('pricing');
+              }}
+            >
+              Fixed Pricing &amp; Delivery Guarantee
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              className="menu-link"
+              onClick={() => {
+                setIsMenuOpen(false);
+                scrollToSection('reviews-and-council');
+              }}
+            >
+              Sample Fixes
             </button>
           </li>
         </ol>
@@ -251,29 +270,64 @@ export default function App() {
           </div>
 
           <div className="hero-main wrap">
-            {/* Compact Top Hero Header */}
-            <div className="hero-top-bar">
-              <h1 className="headline">
-                <span>We Expose</span>
-                <span>Hidden</span>
-                <span>Bleed.</span>
-              </h1>
-
-              <div className="aux">
-                <ul className="tags">
-                  <li>Golden Report v6</li>
-                  <li>Mindprint OSINT</li>
-                  <li>Leak Ledger</li>
-                  <li>Ask Intros</li>
-                </ul>
-                <p>
-                  Enter a Company URL, a LinkedIn Executive URL, or run both together below to
-                  generate a 22-chapter Forensic Audit and 12-section Mindprint Dossier.
+            {/* Contractor Inquiry-to-Booking Gap Positioning Header */}
+            <div className="hero-top-bar flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8">
+              <div className="max-w-3xl space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/20 bg-white/5 font-mono text-xs uppercase tracking-widest text-white/90">
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                  <span>CONTRACTOR WORKFLOW GAP REMEDIATION // NO SOFTWARE REPLACEMENT</span>
+                </div>
+                <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white leading-[0.95]">
+                  Stop losing jobs between the first call and the booked appointment.
+                </h1>
+                <p className="text-base sm:text-lg text-zinc-100 leading-relaxed max-w-2xl font-normal">
+                  Get a free scan of your customer inquiry process. See the problems we can verify, then choose a fixed-price plan to build the fixes—without replacing your existing tools.
                 </p>
+
+                {/* DUAL PROPOSED CTAS */}
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection('scanner')}
+                    className="btn-skeu"
+                    style={{ padding: '14px 26px', fontSize: '13px' }}
+                  >
+                    <span className="dot" />
+                    <span>Scan my business free</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection('what-we-fix')}
+                    className="daemon-chip py-3.5 px-6 text-xs uppercase tracking-wider font-bold inline-flex items-center gap-2"
+                  >
+                    <span>See what we fix</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="aux static lg:relative w-full lg:w-[380px] p-5 rounded-2xl border border-white/20 bg-black/80 backdrop-blur-md space-y-3 shadow-2xl">
+                <div className="font-mono text-xs uppercase tracking-wider text-white font-bold flex items-center justify-between">
+                  <span>Core Positioning Principle</span>
+                  <span className="text-[10px] text-zinc-200 font-bold bg-white/10 px-2 py-0.5 rounded">CONTRACTOR V6</span>
+                </div>
+                <p className="text-xs text-zinc-100 leading-relaxed font-medium">
+                  You’re not buying another contractor app. You’re buying fixes to the gaps between the tools you already use—Jobber, ServiceTitan, Housecall Pro, phone logs, and your website.
+                </p>
+                <div className="pt-2 border-t border-white/15 flex flex-wrap gap-1.5 text-[10.5px] font-mono text-zinc-300 font-semibold">
+                  <span>#1 Free Initial Scan</span>
+                  <span>·</span>
+                  <span>#2 Evidence-Backed</span>
+                  <span>·</span>
+                  <span>#3 Fixed Scope</span>
+                </div>
               </div>
             </div>
 
-            {/* TOP-OF-PAGE DUAL-URL FORENSIC SCANNER CONSOLE */}
+            {/* TOP-OF-PAGE DUAL-URL FORENSIC SCANNER CONSOLE (PRESERVED & ENHANCED) */}
+            <div id="scanner" className="pt-2">
             <UrlScannerCommandView
               companyScan={companyScan}
               personScan={personScan}
@@ -304,6 +358,7 @@ export default function App() {
                 setPersonScan(null);
               }}
             />
+            </div>
           </div>
 
           {/* Partners / Capabilities Marquee Strip */}
@@ -340,110 +395,27 @@ export default function App() {
           </div>
         </section>
 
+        {/* SECTION: LAUNCH PROOF STRIP & 4-STEP EVIDENCE WALKTHROUGH */}
+        <ProofStripWalkthrough />
+
+        {/* SECTION: WHAT WE FIX (ALTERNATIVES COMPARISON TABLE) */}
+        <AlternativesComparisonView />
+
+        {/* SECTION: AUTONOMOUS DETERMINISTIC SCOPE & QUOTING ENGINE */}
+        <DeterministicScopeEngine />
+
+        {/* SECTION: TRANSPARENT PRICING LADDER & DELIVERY GUARANTEE */}
+        <PricingLadderView />
+
+        {/* SECTION: OWNER REVIEWS, LABELED SAMPLES & GOVERNANCE COUNCIL */}
+        <ReviewsAndCouncilView />
+
         {/* SECTION 02: 4-PILLAR SYSTEM ARCHITECTURE (.svc / .svc-card / .steps from Daemon Template) */}
         <section id="architecture" className="sec">
           <div className="gridlines" aria-hidden="true" />
           <div className="wrap">
             <div className="sec-head">
-              <div>
-                <div className="eyebrow">
-                  <span className="badge">
-                    <i></i>
-                    <span>02 // INTEGRATED METHODOLOGY</span>
-                  </span>
-                </div>
-                <h2 className="h2">
-                  Four Engines. <span className="soft">One Truth.</span>
-                </h2>
-              </div>
-              <p className="lede">
-                Every URL scan passes through four deterministic engines so public observations,
-                inferred cohort models, and executive communication hypotheses never blur together.
-              </p>
             </div>
-
-            <div className="svc">
-              <div className="svc-card">
-                <div className="svc-num">
-                  <span>01 // ENGINE</span>
-                  <span>[T3, T4]</span>
-                </div>
-                <div className="svc-ico">
-                  <Globe />
-                </div>
-                <h3>Golden Report</h3>
-                <p>
-                  22-chapter website &amp; pipeline autopsy that prices active revenue leaks across
-                  SEO, CTA hierarchy, contact hygiene, and owner capacity.
-                </p>
-                <ul>
-                  <li>22 Chapters</li>
-                  <li>30/60/90 Plan</li>
-                  <li>12 Social Posts</li>
-                </ul>
-              </div>
-
-              <div className="svc-card">
-                <div className="svc-num">
-                  <span>02 // ENGINE</span>
-                  <span>[MODEL V6]</span>
-                </div>
-                <div className="svc-ico">
-                  <Scale />
-                </div>
-                <h3>Canonical Ledger</h3>
-                <p>
-                  Eliminates double counting through root-cause fingerprints, chapter ownership,
-                  roll-up exclusions, and the Two-Reference Safeguard.
-                </p>
-                <ul>
-                  <li>Deduplicated</li>
-                  <li>Profit Bridge</li>
-                  <li>Sensitivity 4×5</li>
-                </ul>
-              </div>
-
-              <div className="svc-card">
-                <div className="svc-num">
-                  <span>03 // ENGINE</span>
-                  <span>[OSINT 10-STAGE]</span>
-                </div>
-                <div className="svc-ico">
-                  <UserCheck />
-                </div>
-                <h3>Mindprint Dossier</h3>
-                <p>
-                  12-section executive intelligence report mapping Communication DNA, Thinking Core
-                  Graph, MBTI Hypothesis, and ACH competing explanations.
-                </p>
-                <ul>
-                  <li>Multi-Source OSINT</li>
-                  <li>Thinking Graph</li>
-                  <li>ACH Casebook</li>
-                </ul>
-              </div>
-
-              <div className="svc-card">
-                <div className="svc-num">
-                  <span>04 // ENGINE</span>
-                  <span>[CONSENT-GATED]</span>
-                </div>
-                <div className="svc-ico">
-                  <Network />
-                </div>
-                <h3>Ask Intros &amp; Brain</h3>
-                <p>
-                  Connects the company&apos;s verified bottleneck to the right executive with a
-                  Laplace-smoothed match score and Butler Meeting Brief.
-                </p>
-                <ul>
-                  <li>Match Score</li>
-                  <li>Butler Brief</li>
-                  <li>Cohort Lift</li>
-                </ul>
-              </div>
-            </div>
-
             <div className="steps">
               <div className="step">
                 <b>STEP 01 // INTAKE</b>
@@ -482,13 +454,13 @@ export default function App() {
         </section>
 
         {/* SECTION 03: THE METHOD BEHIND THE METHODOLOGY — 3D FLIPBOOK CODEX */}
-        <AetherisCodexView onOpenModal={() => setIsCodexModalOpen(true)} />
+
 
       </main>
 
       {/* DAEMON FOOTER */}
       <footer className="border-t border-white/10 py-10">
-        <div className="wrap flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#9a9a9a]">
+        <div className="wrap flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-300 font-medium">
           <div className="flex items-center gap-3">
             <div className="logo-mark" style={{ width: 16, height: 16 }} aria-hidden="true">
               <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
@@ -591,56 +563,7 @@ export default function App() {
         </div>
       )}
 
-      {/* 3D AETHERIS CODEX FLIPBOOK STUDIO MODAL */}
-      {isCodexModalOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-6 animate-view-enter"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Aetheris 3D Digital Flipbook Codex Studio"
-        >
-          <div className="w-full max-w-7xl h-[94vh] rounded-2xl border border-white/20 bg-[#0a0a0a] flex flex-col overflow-hidden shadow-2xl">
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/10 bg-[#070707]">
-              <div className="flex items-center gap-2.5 font-mono text-xs text-white">
-                <BookOpen className="w-4 h-4 text-white" />
-                <span className="font-semibold uppercase tracking-wider">
-                  The Aetheris Codex // The Method Behind The Methodology
-                </span>
-                <span className="hidden sm:inline text-[#9a9a9a] text-[11px]">
-                  (Interactive 3D Digital Flipbook by Joseph Toney)
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <a
-                  href={AETHERIS_CODEX_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="daemon-chip inline-flex items-center gap-1.5"
-                >
-                  <span>Open Direct</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setIsCodexModalOpen(false)}
-                  aria-label="Close Codex Studio"
-                  className="daemon-chip p-1.5"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-            <div className="flex-1 bg-black relative">
-              <iframe
-                src={AETHERIS_CODEX_URL}
-                title="Aetheris — 3D Interactive Forensic Methodology Codex"
-                className="w-full h-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      {/* 3D AETHERIS CODEX FLIPBOOK STUDIO MODAL - REMOVED */}
     </div>
   );
 }

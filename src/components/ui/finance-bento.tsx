@@ -40,16 +40,16 @@ const CSS = `.fpb{font-family:Geist,ui-sans-serif,system-ui,-apple-system,sans-s
 .fpb *{box-sizing:border-box}
 .fpb .fpb-c{border-radius:28px}
 .fpb .vbrow{display:flex;justify-content:flex-end;margin-top:16px}
-.fpb{--acc:#FFFFFF;--t1:#fff;--t2:rgba(255,255,255,.56);--t3:rgba(255,255,255,.38);--hair:rgba(255,255,255,.14);--ease:cubic-bezier(.32,.72,0,1);
-    --fiat:#FFFFFF;--stocks:#A9B2FF;--crypto:#FFB37A}
+.fpb{--acc:#FFFFFF;--t1:#ffffff;--t2:rgba(255,255,255,.98);--t3:rgba(255,255,255,.92);--hair:rgba(255,255,255,.28);--ease:cubic-bezier(.32,.72,0,1);
+    --fiat:#FFFFFF;--stocks:#E2E8F0;--crypto:#FED7AA}
 .fpb *{box-sizing:border-box}
-.fpb .fpb-c{position:relative;padding:20px 22px 22px;background:#000;color:#fff;border:1px solid rgba(255,255,255,.12)}
+.fpb .fpb-c{position:relative;padding:20px 22px 22px;background:#050505;color:#fff;border:1px solid rgba(255,255,255,.22)}
 .fpb .top{display:flex;align-items:center;gap:14px;height:44px;margin-bottom:16px}
-.fpb .top h1{margin:0;font-size:28px;font-weight:700;letter-spacing:-.03em;flex:1}
-.fpb .top h1 span{font-weight:500;color:var(--t3);font-size:15px;letter-spacing:-.01em;margin-left:12px}
-.fpb .seg{display:flex;padding:3px;gap:2px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
-.fpb .seg button{border:0;height:28px;min-width:44px;padding:0 12px;border-radius:11px;background:transparent;color:var(--t2);font:600 12.5px Geist,sans-serif;cursor:pointer;transition:background .25s,color .25s}
-.fpb .seg button[aria-pressed="true"]{background:#fff;color:#0b0b0c}
+.fpb .top h1{margin:0;font-size:28px;font-weight:700;letter-spacing:-.03em;flex:1;color:#fff}
+.fpb .top h1 span{font-weight:600;color:rgba(255,255,255,.95);font-size:14.5px;letter-spacing:-.01em;margin-left:12px}
+.fpb .seg{display:flex;padding:3px;gap:2px;border-radius:14px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24)}
+.fpb .seg button{border:0;height:28px;min-width:44px;padding:0 12px;border-radius:11px;background:transparent;color:rgba(255,255,255,.95);font:700 12.5px Geist,sans-serif;cursor:pointer;transition:background .25s,color .25s}
+.fpb .seg button[aria-pressed="true"]{background:#fff;color:#0b0b0c;font-weight:700}
 .fpb .seg button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .fpb .ctrls{display:flex;gap:10px}
 .fpb .ava{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px rgba(255,255,255,.18);flex:0 0 auto}
@@ -85,35 +85,35 @@ const CSS = `.fpb{font-family:Geist,ui-sans-serif,system-ui,-apple-system,sans-s
 @media (max-width:520px){.fpb .kpi{grid-column:span 12}}
 .fpb .card{position:relative;border-radius:28px;overflow:hidden;opacity:0;transform:translateY(14px) scale(.985);transition:opacity .7s ease,transform .9s var(--ease)}
 .fpb .in .card{opacity:1;transform:none}
-.fpb .card .rim{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 1px rgba(255,255,255,.06);pointer-events:none;z-index:9}
+.fpb .card .rim{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 0 0 1px rgba(255,255,255,.08);pointer-events:none;z-index:9}
 .fpb .g{position:absolute;inset:0}
 .fpb .core{position:absolute;left:10%;right:10%;top:16%;bottom:-6%;border-radius:90px;filter:blur(60px)}
-.fpb .glass{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(20px)}
+.fpb .glass{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.20);backdrop-filter:blur(24px)}
 .fpb .glass .rim{display:none}
 .fpb .solid{background:var(--acc);color:#0b0b0c}
 .fpb .solid .rim{box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
 .fpb .in-c{position:absolute;inset:0;padding:22px 24px;z-index:2}
-.fpb .ttl{font-size:18px;font-weight:600;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
-.fpb .cap{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--t2)}
-.fpb .solid .cap{color:rgba(0,0,0,.55)}
-.fpb .big{font-size:40px;font-weight:200;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.fpb .delta{font:600 12.5px "Geist Mono",monospace;color:var(--acc);letter-spacing:-.02em}
-.fpb .muted{font-size:12.5px;color:var(--t3);font-weight:500;letter-spacing:-.01em}
-.fpb .chip{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:11px;background:rgba(0,0,0,.85);color:#fff;font:600 11px "Geist Mono",monospace;letter-spacing:-.02em}
-.fpb .legend{display:flex;gap:16px;font-size:12px;font-weight:500;color:var(--t2)}
+.fpb .ttl{font-size:18px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;color:#fff}
+.fpb .cap{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.95)}
+.fpb .solid .cap{color:rgba(0,0,0,.85);font-weight:700}
+.fpb .big{font-size:40px;font-weight:300;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;color:#fff}
+.fpb .delta{font:700 12.5px "Geist Mono",monospace;color:#fff;letter-spacing:-.02em}
+.fpb .muted{font-size:12.5px;color:rgba(255,255,255,.96);font-weight:600;letter-spacing:-.01em}
+.fpb .chip{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:11px;background:rgba(0,0,0,.85);color:#fff;font:700 11px "Geist Mono",monospace;letter-spacing:-.02em}
+.fpb .legend{display:flex;gap:16px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.96)}
 .fpb .legend span{display:inline-flex;align-items:center;gap:6px}
 .fpb .legend i{width:8px;height:8px;border-radius:50%}
 .fpb .row{display:flex;align-items:center;gap:12px}
 .fpb .mono{font-family:"Geist Mono",monospace;font-variant-numeric:tabular-nums}
 .fpb .dots circle{transition:opacity .26s,transform .26s;transform-box:fill-box;transform-origin:center}
-.fpb .tip{position:fixed;z-index:50;pointer-events:none;background:rgba(14,14,16,.92);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:9px 11px;font-size:12px;
+.fpb .tip{position:fixed;z-index:50;pointer-events:none;background:rgba(14,14,16,.96);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:9px 11px;font-size:12px;
     backdrop-filter:blur(16px);box-shadow:0 12px 30px -10px rgba(0,0,0,.6);opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s;white-space:nowrap;min-width:150px}
 .fpb .tip.on{opacity:1;transform:none}
-.fpb .tip .t{color:var(--t2);margin-bottom:5px;font-weight:500}
+.fpb .tip .t{color:rgba(255,255,255,.95);margin-bottom:5px;font-weight:700}
 .fpb .tip .r{display:flex;justify-content:space-between;gap:14px;align-items:center;line-height:19px}
-.fpb .tip .r span{display:inline-flex;align-items:center;gap:6px;color:var(--t2)}
+.fpb .tip .r span{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.95)}
 .fpb .tip i{width:7px;height:7px;border-radius:50%}
-.fpb .tip b{font:500 12px "Geist Mono",monospace}
+.fpb .tip b{font:600 12px "Geist Mono",monospace}
 .fpb .vb-badge{--vb-on:#6a5cff;display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 12px 0 11px;border-radius:17px;background:#111113;border:1px solid rgba(255,255,255,.1);color:#fff;text-decoration:none;font:500 13px/1 Geist,sans-serif;letter-spacing:-.02em;box-shadow:0 8px 24px -14px rgba(0,0,0,.25);transition:border-color .25s}
 .fpb .vb-badge:hover{border-color:color-mix(in oklab,var(--vb-on) 45%,transparent)}
 .fpb .vb-mark{display:grid;grid-template-columns:repeat(5,3px);grid-template-rows:repeat(3,3px);gap:2px}
@@ -122,7 +122,7 @@ const CSS = `.fpb{font-family:Geist,ui-sans-serif,system-ui,-apple-system,sans-s
 .fpb .vb-badge:hover .vb-mark i.on{animation:vbw .9s cubic-bezier(.3,1.4,.4,1) calc(var(--x)*60ms) 1}
 .fpb .vb-badge:hover .vb-mark i:not(.on){background:color-mix(in oklab,var(--vb-on) 22%,transparent)}
 @keyframes vbw{0%,100%{transform:none}40%{transform:translateY(-2px) scale(1.35)}}
-.fpb .vb-by{color:rgba(255,255,255,.5)}
+.fpb .vb-by{color:rgba(255,255,255,.7)}
 .fpb .vb-arr{height:12px;width:0;margin-left:-9px;opacity:0;transform:translate(-4px,4px);transition:all .3s cubic-bezier(.2,.9,.25,1)}
 .fpb .vb-badge:hover .vb-arr{width:12px;margin-left:0;opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){.fpb .card{transition:none}}`;
@@ -161,8 +161,8 @@ function mount(root, data) {
   const $id = (id) => root.querySelector("#" + id);
 
 const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const ACC = '#FFFFFF', T2 = 'rgba(255,255,255,.56)', T3 = 'rgba(255,255,255,.38)', HAIR = 'rgba(255,255,255,.14)';
-const COL = { fiat: '#FFFFFF', stocks: '#A9B2FF', crypto: '#FFB37A' };
+const ACC = '#FFFFFF', T2 = 'rgba(255,255,255,.98)', T3 = 'rgba(255,255,255,.94)', HAIR = 'rgba(255,255,255,.28)';
+const COL = { fiat: '#FFFFFF', stocks: '#CBD5E1', crypto: '#FDBA74' };
 const ease = (t) => 1 - Math.pow(1 - t, 3);
 const NS = 'http://www.w3.org/2000/svg';
 const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
@@ -204,12 +204,12 @@ function bg({ top, base, bottom, core }) {
   return `<div class="g" style="background:linear-gradient(180deg,${top} 0%,${base} 36%,${base} 74%,${bottom} 100%)"></div><div class="core" style="background:${core}"></div>`;
 }
 const GR = {
-  blue: { top: '#b9a6ff', base: '#2e43ff', bottom: '#6d7dff', core: '#05082a' },
-  graph: { top: '#9a9aa8', base: '#3a3a44', bottom: '#55555f', core: '#060608' },
-  pink: { top: '#ffb3d6', base: '#b02a65', bottom: '#cf5a88', core: '#2a0314' },
-  copper: { top: '#f6bf96', base: '#a85830', bottom: '#c0784c', core: '#1d0b05' },
-  amber: { top: '#fed7aa', base: '#b45309', bottom: '#d97706', core: '#221102' },
-  purple: { top: '#e9d5ff', base: '#6b21a8', bottom: '#9333ea', core: '#170326' },
+  blue: { top: '#312e81', base: '#1e1b4b', bottom: '#0f172a', core: '#020617' },
+  graph: { top: '#334155', base: '#1e293b', bottom: '#0f172a', core: '#020617' },
+  pink: { top: '#700c35', base: '#43061f', bottom: '#1a030c', core: '#080104' },
+  copper: { top: '#7c2d12', base: '#431407', bottom: '#1c0702', core: '#090201' },
+  amber: { top: '#78350f', base: '#451a03', bottom: '#1c0b02', core: '#0a0300' },
+  purple: { top: '#4c1d95', base: '#2e1065', bottom: '#14052e', core: '#05010d' },
 };
 function smoothPath(P, move = true) {
   if (!P || P.length === 0) return '';
@@ -344,8 +344,8 @@ function drawNW() {
       const t = total(D[i]);
       return `<g style="opacity:${g > .6 ? 1 : 0};transition:opacity .4s ${k * .08}s">
       <line x1="${x}" x2="${x}" y1="${top - 4}" y2="${Hh - bot + 4}" stroke="rgba(0,0,0,.55)" stroke-width="1.5"/>
-      <rect x="${x - 34}" y="${top - 14}" width="68" height="22" rx="11" fill="#000"/><text x="${x}" y="${top + 1}" text-anchor="middle" font-size="11" font-weight="600" fill="#fff" font-family="Geist Mono">${money(t, { compact: true })}</text>
-      <rect x="${x - 30}" y="${Hh - bot - 8}" width="60" height="22" rx="11" fill="#000"/><text x="${x}" y="${Hh - bot + 7}" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.7)" font-family="Geist Mono">${D[i].l}</text></g>`;
+      <rect x="${x - 34}" y="${top - 14}" width="68" height="22" rx="11" fill="#000"/><text x="${x}" y="${top + 1}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Geist Mono">${money(t, { compact: true })}</text>
+      <rect x="${x - 30}" y="${Hh - bot - 8}" width="60" height="22" rx="11" fill="#000"/><text x="${x}" y="${Hh - bot + 7}" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff" font-family="Geist Mono">${D[i].l}</text></g>`;
     }).join('')}
     <line class="hl" y1="${top}" y2="${Hh - bot}" stroke="#fff" stroke-width="1.5" opacity="0"/>
     <rect width="${W}" height="${Hh}" fill="transparent" class="hit"/>`;
@@ -384,7 +384,7 @@ function updateNW() {
 /* ---- Allocation: a half gauge of tick marks ---- */
 const al = $id('alloc');
 al.innerHTML = `${bg(GR.graph)}<div class="in-c">
-  <div class="row" style="justify-content:space-between"><div class="ttl">Leak Allocation</div><span class="chip" style="background:rgba(255,255,255,.12)">Ledger v6 Model</span></div>
+  <div class="row" style="justify-content:space-between"><div class="ttl" style="color:#ffffff;font-weight:700">Leak Allocation</div><span class="chip" style="background:rgba(255,255,255,.18);color:#ffffff;font-weight:700">Ledger v6 Model</span></div>
   <svg class="alg" width="300" height="168" viewBox="-150 -150 300 168" style="position:absolute;left:50%;margin-left:-150px;top:70px" aria-hidden="true"></svg>
   <div class="all" style="position:absolute;left:24px;right:24px;bottom:20px"></div></div><div class="rim"></div>`;
 function updateAlloc() {
@@ -395,24 +395,24 @@ function updateAlloc() {
   for (let i = 0; i <= n; i++) {
     const f = i / n, a = 180 + f * 180, cls = f <= fr.stocks ? 'stocks' : f <= fr.stocks + fr.crypto ? 'crypto' : 'fiat';
     const [x1, y1] = P2(136, a), [x2, y2] = P2(i % 7 === 0 ? 112 : 118, a);
-    s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${COL[cls]}" stroke-opacity="${cls === 'fiat' ? .35 : 1}" stroke-width="3.2" stroke-linecap="round" style="opacity:0;animation:tk .4s ${i * 12}ms forwards"/>`;
+    s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${COL[cls]}" stroke-opacity="${cls === 'fiat' ? .45 : 1}" stroke-width="3.2" stroke-linecap="round" style="opacity:0;animation:tk .4s ${i * 12}ms forwards"/>`;
   }
   const inv = Math.round((fr.stocks + fr.crypto) * 100);
-  s += `<text y="-22" text-anchor="middle" font-family="Geist" font-weight="200" font-size="52" fill="#fff" letter-spacing="-2">${inv}<tspan font-size="17" dy="-24" fill="${T2}">%</tspan></text><text y="0" text-anchor="middle" font-size="12" font-weight="500" fill="${T3}" font-family="Geist">pipeline drag</text>`;
+  s += `<text y="-22" text-anchor="middle" font-family="Geist" font-weight="300" font-size="52" fill="#fff" letter-spacing="-2">${inv}<tspan font-size="18" dy="-24" fill="#ffffff" font-weight="600">%</tspan></text><text y="0" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff" font-family="Geist">pipeline drag</text>`;
   if (svg) svg.innerHTML = `<style>@keyframes tk{to{opacity:1}}</style>` + s;
   const allEl = al.querySelector('.all');
   if (allEl) {
     allEl.innerHTML = [['Pipeline Drift', fr.stocks, p.stocks, 'stocks'], ['Friction Drag', fr.crypto, p.crypto, 'crypto'], ['Operational', fr.fiat, p.fiat, 'fiat']].map(([k, f, v, c], i) =>
-      `<div class="row" style="height:30px;${i ? 'border-top:1px solid rgba(255,255,255,.1)' : ''}"><i style="width:8px;height:8px;border-radius:50%;background:${COL[c]}"></i><span style="flex:1;font-size:13px;font-weight:600">${k}</span><span class="mono muted" style="width:44px;text-align:right">${Math.round(f * 100)}%</span><span class="mono" style="width:76px;text-align:right;font-size:13px">${money(v)}</span></div>`).join('');
+      `<div class="row" style="height:30px;${i ? 'border-top:1px solid rgba(255,255,255,.14)' : ''}"><i style="width:8px;height:8px;border-radius:50%;background:${COL[c]}"></i><span style="flex:1;font-size:13.5px;font-weight:600;color:#ffffff">${k}</span><span class="mono" style="width:44px;text-align:right;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.92)">${Math.round(f * 100)}%</span><span class="mono" style="width:84px;text-align:right;font-size:13.5px;font-weight:600;color:#ffffff">${money(v)}</span></div>`).join('');
   }
 }
 
 /* ---- KPI: return / Remediation ROI ---- */
 const ret = $id('ret');
-ret.innerHTML = `${bg(GR.amber)}<div class="in-c"><div class="row" style="justify-content:space-between"><div class="cap">Remediation ROI</div><span class="chip rtc">+$0</span></div>
+ret.innerHTML = `${bg(GR.amber)}<div class="in-c"><div class="row" style="justify-content:space-between"><div class="cap" style="color:#ffffff;font-weight:700">Remediation ROI</div><span class="chip rtc" style="color:#ffffff;font-weight:700">+$0</span></div>
   <div style="position:absolute;left:22px;bottom:32px;display:flex;align-items:center;gap:8px"><svg width="30" height="36" viewBox="0 0 34 40" aria-hidden="true"><path d="M17 37V5M5 17L17 5l12 12" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <span class="big rtv" style="font-size:52px">0%</span></div>
-  <div class="muted rtp" style="position:absolute;left:24px;bottom:14px;font-size:11.5px"></div></div><div class="rim"></div>`;
+    <span class="big rtv" style="font-size:52px;font-weight:300;color:#ffffff">0%</span></div>
+  <div class="rtp" style="position:absolute;left:24px;bottom:14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.92)"></div></div><div class="rim"></div>`;
 function updateRet() {
   if (!nwData || !nwData.length) return;
   const D = nwData, inv0 = D[0].stocks + D[0].crypto, inv1 = D[D.length - 1].stocks + D[D.length - 1].crypto, r = (inv1 - inv0) / (inv0 || 1) * 100;
@@ -425,8 +425,8 @@ function updateRet() {
 
 /* ---- KPI: free cash / Runway ---- */
 const cash = $id('cash');
-cash.innerHTML = `<div class="in-c"><div class="row" style="justify-content:space-between"><div class="cap">Capital Burn Buffer</div><span class="muted">Runway</span></div>
-  <div class="row" style="margin-top:14px;align-items:baseline;justify-content:space-between"><span class="big csv" style="font-size:38px">0</span><span class="mono" style="font-size:20px;font-weight:500"><span class="crw">0</span><span class="muted" style="font-size:12px"> mo</span></span></div>
+cash.innerHTML = `<div class="in-c"><div class="row" style="justify-content:space-between"><div class="cap" style="color:#ffffff;font-weight:700">Capital Burn Buffer</div><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.9)">Runway</span></div>
+  <div class="row" style="margin-top:14px;align-items:baseline;justify-content:space-between"><span class="big csv" style="font-size:38px;color:#ffffff;font-weight:300">0</span><span class="mono" style="font-size:20px;font-weight:600;color:#ffffff"><span class="crw">0</span><span style="font-size:13px;color:rgba(255,255,255,.9);font-weight:600"> mo</span></span></div>
   <svg class="cst" width="100%" height="22" style="position:absolute;left:24px;right:24px;bottom:22px;width:calc(100% - 48px)" aria-hidden="true"></svg></div>`;
 function updateCash() {
   if (!nwData || !nwData.length) return;
@@ -439,32 +439,32 @@ function updateCash() {
   let s = '';
   for (let i = 0; i < n; i++) {
     const x = 1 + i * (W - 2) / (n - 1), on = i / (n - 1) <= mo / 12;
-    s += `<line x1="${x}" x2="${x}" y1="${i % 6 === 0 ? 2 : 8}" y2="20" stroke="${on ? ACC : 'rgba(255,255,255,.28)'}" stroke-width="1.6" stroke-linecap="round" style="transition:stroke .2s ${i * 14}ms"/>`;
+    s += `<line x1="${x}" x2="${x}" y1="${i % 6 === 0 ? 2 : 8}" y2="20" stroke="${on ? '#FFFFFF' : 'rgba(255,255,255,.32)'}" stroke-width="1.6" stroke-linecap="round" style="transition:stroke .2s ${i * 14}ms"/>`;
   }
-  svg.innerHTML = s + `<text x="${W}" y="0" dy="-4" text-anchor="end" font-size="10" fill="${T3}" font-family="Geist Mono">12 mo</text>`;
+  svg.innerHTML = s + `<text x="${W}" y="0" dy="-4" text-anchor="end" font-size="11" font-weight="600" fill="#ffffff" font-family="Geist Mono">12 mo</text>`;
 }
 
 /* ---- KPI: upcoming payments / Remediation Milestones ---- */
 const pay = $id('pay');
 const PAY = (data?.payments || []).map((p) => [p.name, p.date, p.amount, p.name.charAt(0)]);
 function updatePay() {
-  pay.innerHTML = `<div class="in-c" style="padding-bottom:14px"><div class="row" style="justify-content:space-between"><div class="cap">Remediation Phases</div><span class="mono muted">${money(PAY.reduce((a, p) => a + p[2], 0))}</span></div>
-  <div style="margin-top:10px">${PAY.map(([n, d, v, l], i) => `<div class="row" style="height:34px;${i ? 'border-top:1px solid rgba(255,255,255,.08)' : ''}"><i style="width:24px;height:24px;border-radius:8px;background:rgba(255,255,255,.1);display:grid;place-items:center;font:600 11px Geist;font-style:normal">${l}</i><span style="flex:1;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${n}</span><span class="muted mono" style="font-size:11.5px">${d}</span><span class="mono" style="width:62px;text-align:right;font-size:13px">${money(v)}</span></div>`).join('')}</div></div>`;
+  pay.innerHTML = `<div class="in-c" style="padding-bottom:14px"><div class="row" style="justify-content:space-between"><div class="cap" style="color:#ffffff;font-weight:700">Remediation Phases</div><span class="mono" style="font-size:13px;font-weight:700;color:#ffffff">${money(PAY.reduce((a, p) => a + p[2], 0))}</span></div>
+  <div style="margin-top:10px">${PAY.map(([n, d, v, l], i) => `<div class="row" style="height:34px;${i ? 'border-top:1px solid rgba(255,255,255,.14)' : ''}"><i style="width:24px;height:24px;border-radius:8px;background:rgba(255,255,255,.15);color:#fff;display:grid;place-items:center;font:700 11px Geist;font-style:normal">${l}</i><span style="flex:1;font-size:13px;font-weight:600;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${n}</span><span class="mono" style="font-size:12px;font-weight:600;color:rgba(255,255,255,.9)">${d}</span><span class="mono" style="width:72px;text-align:right;font-size:13.5px;font-weight:600;color:#ffffff">${money(v)}</span></div>`).join('')}</div></div>`;
 }
 
 /* ---- KPI: goals ---- */
 const goals = $id('goals');
 const GO = (data?.goals || []).map((g) => [g.name, g.progress, g.target]);
 function updateGoals() {
-  goals.innerHTML = `<div class="in-c"><div class="row" style="justify-content:space-between"><div class="cap">Target Mitigation</div><span class="muted">${GO.length} active</span></div>
-  ${GO.map(([n, f, v], k) => `<div style="margin-top:${k ? 14 : 16}px"><div class="row" style="justify-content:space-between;font-size:13px;font-weight:600"><span>${n}</span><span class="mono" style="font-weight:500">${Math.round(f * 100)}%<span class="muted"> of ${money(v, { compact: true })}</span></span></div>
+  goals.innerHTML = `<div class="in-c"><div class="row" style="justify-content:space-between"><div class="cap" style="color:#ffffff;font-weight:700">Target Mitigation</div><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.9)">${GO.length} active</span></div>
+  ${GO.map(([n, f, v], k) => `<div style="margin-top:${k ? 14 : 16}px"><div class="row" style="justify-content:space-between;font-size:13.5px;font-weight:600;color:#ffffff"><span>${n}</span><span class="mono" style="font-weight:600;color:#ffffff">${Math.round(f * 100)}%<span style="color:rgba(255,255,255,.85);font-weight:500"> of ${money(v, { compact: true })}</span></span></div>
     <svg width="100%" height="12" style="margin-top:8px;display:block" class="gl" data-f="${f}" aria-hidden="true"></svg></div>`).join('')}</div>`;
   RAF(() => goals.querySelectorAll('.gl').forEach((svg, k) => {
     const W = svg.getBoundingClientRect().width || 180, n = 40, f = +svg.dataset.f;
     let s = '';
     for (let i = 0; i < n; i++) {
       const x = 1 + i * (W - 2) / (n - 1), on = i / (n - 1) <= f;
-      s += `<line x1="${x}" x2="${x}" y1="${i % 8 === 0 ? 0 : 4}" y2="12" stroke="${on ? ACC : 'rgba(255,255,255,.28)'}" stroke-width="1.6" stroke-linecap="round" style="opacity:0;animation:tk2 .3s ${300 + k * 150 + i * 12}ms forwards"/>`;
+      s += `<line x1="${x}" x2="${x}" y1="${i % 8 === 0 ? 0 : 4}" y2="12" stroke="${on ? '#FFFFFF' : 'rgba(255,255,255,.32)'}" stroke-width="1.6" stroke-linecap="round" style="opacity:0;animation:tk2 .3s ${300 + k * 150 + i * 12}ms forwards"/>`;
     }
     svg.innerHTML = '<style>@keyframes tk2{to{opacity:1}}</style>' + s;
   }));
@@ -473,8 +473,8 @@ function updateGoals() {
 /* ---- Cash flow: mirrored waves, income above, spending below ---- */
 const flow = $id('flow');
 flow.innerHTML = `${bg(GR.pink)}<div class="in-c">
-  <div class="row" style="justify-content:space-between"><div><div class="ttl">Revenue vs Friction Bleed</div><div class="muted" style="margin-top:4px">Net Bleed <span class="mono" style="color:#FFB37A">−$68,400</span> /mo</div></div>
-    <div class="legend" style="flex-direction:column;gap:4px;align-items:flex-end"><span><i style="background:#fff"></i>Gross Run-rate</span><span><i style="background:#FFD0E6"></i>Leak Burn</span></div></div>
+  <div class="row" style="justify-content:space-between"><div><div class="ttl" style="color:#ffffff;font-weight:700">Revenue vs Friction Bleed</div><div style="margin-top:4px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.92)">Net Bleed <span class="mono" style="color:#FFA07A;font-weight:700">−$68,400</span> /mo</div></div>
+    <div class="legend" style="flex-direction:column;gap:4px;align-items:flex-end"><span><i style="background:#fff"></i><strong style="color:#fff;font-weight:600">Gross Run-rate</strong></span><span><i style="background:#FFD0E6"></i><strong style="color:#FFD0E6;font-weight:600">Leak Burn</strong></span></div></div>
   <svg class="fls" style="position:absolute;left:0;bottom:12px" aria-hidden="true"></svg></div><div class="rim"></div>`;
 const MLAB = data?.cashflow?.months || ["May", "Jun", "Jul", "Aug", "Sep", "Oct"];
 const INC = data?.cashflow?.income || [[2.4, 3.6, 5.4, 6.4, 5.0, 3.4], [2.0, 3.0, 4.4, 5.2, 4.2, 2.8], [1.6, 2.4, 3.4, 4.0, 3.3, 2.2]];
@@ -495,12 +495,12 @@ function updateFlow(instant) {
     [0, 2, 4, 6].forEach((v) => {
       const u = v / RATE[S.ccy], yT = mid - lab - u / max * amp, yB = mid + lab + u / max * amp;
       s += `<line x1="${L}" x2="${R}" y1="${yT}" y2="${yT}" stroke="${HAIR}"/><line x1="${L}" x2="${R}" y1="${yB}" y2="${yB}" stroke="${HAIR}"/>
-        <text x="${L - 12}" y="${yT + 3.5}" text-anchor="end" font-size="10" fill="${T3}" font-family="Geist Mono">${v ? SYM[S.ccy] + v + 'K' : '0'}</text><text x="${L - 12}" y="${yB + 3.5}" text-anchor="end" font-size="10" fill="${T3}" font-family="Geist Mono">${v ? SYM[S.ccy] + v + 'K' : '0'}</text>
-        <line x1="${R + 8}" x2="${R + 14}" y1="${yT}" y2="${yT}" stroke="${T3}"/><line x1="${R + 8}" x2="${R + 14}" y1="${yB}" y2="${yB}" stroke="${T3}"/>`;
+        <text x="${L - 12}" y="${yT + 3.5}" text-anchor="end" font-size="10.5" font-weight="600" fill="rgba(255,255,255,.95)" font-family="Geist Mono">${v ? SYM[S.ccy] + v + 'K' : '0'}</text><text x="${L - 12}" y="${yB + 3.5}" text-anchor="end" font-size="10.5" font-weight="600" fill="rgba(255,255,255,.95)" font-family="Geist Mono">${v ? SYM[S.ccy] + v + 'K' : '0'}</text>
+        <line x1="${R + 8}" x2="${R + 14}" y1="${yT}" y2="${yT}" stroke="rgba(255,255,255,.6)"/><line x1="${R + 8}" x2="${R + 14}" y1="${yB}" y2="${yB}" stroke="rgba(255,255,255,.6)"/>`;
     });
-    MLAB.forEach((m, i) => s += `<text x="${X(i)}" y="${mid + 4}" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.75)" font-family="Geist Mono">${m}</text>`);
-    INC.slice().reverse().forEach((a, k) => { const j = 2 - k; s += `<path d="${path(a, -1)}" fill="none" stroke="#fff" stroke-opacity="${[1, .55, .3][j]}" stroke-width="${j ? 1.6 : 2.4}" stroke-linecap="round"/>`; });
-    SPN.slice().reverse().forEach((a, k) => { const j = 2 - k; s += `<path d="${path(a, 1)}" fill="none" stroke="#FFD0E6" stroke-opacity="${[1, .55, .3][j]}" stroke-width="${j ? 1.6 : 2.4}" stroke-linecap="round"/>`; });
+    MLAB.forEach((m, i) => s += `<text x="${X(i)}" y="${mid + 4}" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff" font-family="Geist Mono">${m}</text>`);
+    INC.slice().reverse().forEach((a, k) => { const j = 2 - k; s += `<path d="${path(a, -1)}" fill="none" stroke="#fff" stroke-opacity="${[1, .65, .4][j]}" stroke-width="${j ? 1.8 : 2.6}" stroke-linecap="round"/>`; });
+    SPN.slice().reverse().forEach((a, k) => { const j = 2 - k; s += `<path d="${path(a, 1)}" fill="none" stroke="#FFD0E6" stroke-opacity="${[1, .65, .4][j]}" stroke-width="${j ? 1.8 : 2.6}" stroke-linecap="round"/>`; });
     s += `<line class="hl" y1="10" y2="${Hh - 10}" stroke="#fff" stroke-opacity=".5" opacity="0"/><rect class="hit" x="${L - 10}" width="${R - L + 20}" height="${Hh}" fill="transparent"/>`;
     svg.innerHTML = s;
     const hit = svg.querySelector('.hit'), hl = svg.querySelector('.hl');
@@ -520,8 +520,8 @@ function updateFlow(instant) {
 /* ---- Friction & Signal Risk Index (Candles) ---- */
 const cr = $id('crypto');
 const CA = (data?.crypto || []).map((a) => [a.name, a.symbol, a.share, '', []]);
-cr.innerHTML = `${bg(GR.copper)}<div class="in-c"><div class="row" style="justify-content:space-between"><div class="ttl">Signal Risk Volatility</div><span class="muted">7 days</span></div>
-  <div class="row" style="margin-top:14px;align-items:flex-end;justify-content:space-between"><span class="big crv">0</span><span style="padding-bottom:4px"><span class="delta crd"></span><span class="muted"> 24h</span></span></div>
+cr.innerHTML = `${bg(GR.copper)}<div class="in-c"><div class="row" style="justify-content:space-between"><div class="ttl" style="color:#ffffff;font-weight:700">Signal Risk Volatility</div><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.9)">7 days</span></div>
+  <div class="row" style="margin-top:14px;align-items:flex-end;justify-content:space-between"><span class="big crv" style="font-size:38px;color:#ffffff;font-weight:300">0</span><span style="padding-bottom:4px"><span class="delta crd" style="font-weight:700;color:#ffffff"></span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.9)"> 24h</span></span></div>
   <div class="crb" style="margin-top:16px"></div>
   <div class="crl" style="position:absolute;left:24px;right:24px;bottom:14px"></div></div><div class="rim"></div>`;
 const OHLC = Object.fromEntries((data?.crypto || []).map((a) => [a.symbol, a.ohlc]));
@@ -543,15 +543,15 @@ function updateCrypto() {
   if (crd) crd.textContent = '↑ 2.4%';
   const crb = cr.querySelector('.crb');
   if (crb) {
-    crb.innerHTML = `<div style="display:flex;gap:3px;height:6px">${CA.map(([n, s, f], i) => `<div style="flex:0 0 calc(${f * 100}% - 2px);border-radius:3px;background:rgba(255,255,255,${[.95, .6, .32][i]});transform-origin:left;transform:scaleX(0);transition:transform .8s var(--ease) ${.1 + i * .1}s" class="crs"></div>`).join('')}</div>
-      <div style="display:flex;gap:3px;margin-top:7px">${CA.map(([n, s, f]) => `<span class="mono muted" style="flex:0 0 calc(${f * 100}% - 2px);font-size:11px;white-space:nowrap">${s} ${Math.round(f * 100)}%</span>`).join('')}</div>`;
+    crb.innerHTML = `<div style="display:flex;gap:3px;height:6px">${CA.map(([n, s, f], i) => `<div style="flex:0 0 calc(${f * 100}% - 2px);border-radius:3px;background:rgba(255,255,255,${[.95, .7, .45][i]});transform-origin:left;transform:scaleX(0);transition:transform .8s var(--ease) ${.1 + i * .1}s" class="crs"></div>`).join('')}</div>
+      <div style="display:flex;gap:3px;margin-top:7px">${CA.map(([n, s, f]) => `<span class="mono" style="flex:0 0 calc(${f * 100}% - 2px);font-size:11.5px;font-weight:600;color:rgba(255,255,255,.95);white-space:nowrap">${s} ${Math.round(f * 100)}%</span>`).join('')}</div>`;
   }
   RAF(() => RAF(() => cr.querySelectorAll('.crs').forEach((b) => b.style.transform = 'scaleX(1)')));
   const crl = cr.querySelector('.crl');
   if (crl) {
-    crl.innerHTML = CA.map(([n, s, f, c, sp], i) => `<div class="row" style="height:50px;${i ? 'border-top:1px solid rgba(255,255,255,.1)' : ''}">
-      <div style="flex:1;min-width:0"><div style="font-size:13.5px;font-weight:600">${n}</div><div class="mono muted" style="font-size:11px">${s} · 7d</div></div>${candles(s)}
-      <div style="width:80px;text-align:right"><div class="mono" style="font-size:13px">${money(v * f)}</div><div class="mono" style="font-size:11px;color:${CHG[i]?.startsWith('+') ? ACC : T3}">${CHG[i] || ''}</div></div></div>`).join('');
+    crl.innerHTML = CA.map(([n, s, f, c, sp], i) => `<div class="row" style="height:50px;${i ? 'border-top:1px solid rgba(255,255,255,.14)' : ''}">
+      <div style="flex:1;min-width:0"><div style="font-size:13.5px;font-weight:700;color:#ffffff">${n}</div><div class="mono" style="font-size:11.5px;font-weight:600;color:rgba(255,255,255,.88)">${s} · 7d</div></div>${candles(s)}
+      <div style="width:84px;text-align:right"><div class="mono" style="font-size:13.5px;font-weight:600;color:#ffffff">${money(v * f)}</div><div class="mono" style="font-size:11.5px;font-weight:700;color:${CHG[i]?.startsWith('+') ? '#93C5FD' : '#FCA5A5'}">${CHG[i] || ''}</div></div></div>`).join('');
   }
 }
 
@@ -559,8 +559,8 @@ function updateCrypto() {
 const st = $id('stocks');
 const WK = data?.stocks?.days || ["Mon", "Tue", "Wed", "Thu", "Fri"];
 const WV = data?.stocks?.values || [2.1, 1.2, 3.4, 1.9, 4.6];
-st.innerHTML = `${bg(GR.purple)}<div class="in-c"><div class="ttl">Forensic Velocity</div>
-  <div style="margin-top:14px"><span class="big stv" style="font-size:34px">0</span></div><div class="row" style="margin-top:6px;gap:8px"><span class="delta">↑ 1.8%</span><span class="muted">weekly throughput</span></div>
+st.innerHTML = `${bg(GR.purple)}<div class="in-c"><div class="ttl" style="color:#ffffff;font-weight:700">Forensic Velocity</div>
+  <div style="margin-top:14px"><span class="big stv" style="font-size:34px;color:#ffffff;font-weight:300">0</span></div><div class="row" style="margin-top:6px;gap:8px"><span class="delta" style="font-weight:700;color:#ffffff">↑ 1.8%</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.9)">weekly throughput</span></div>
   <svg class="sts" style="position:absolute;left:18px;bottom:14px" aria-hidden="true"></svg></div><div class="rim"></div>`;
 function updateStocks(instant) {
   if (!nwData || !nwData.length) return;
@@ -572,13 +572,13 @@ function updateStocks(instant) {
   svg.setAttribute('width', W); svg.setAttribute('height', Hh);
   const Y = (x) => (Hh - pb) * (1 - x / max);
   let s = '';
-  [0, 2, 4].forEach((t) => s += `<text x="0" y="${Y(t) + 3.5}" font-size="9.5" fill="${T3}" font-family="Geist Mono">${t}K</text>`);
+  [0, 2, 4].forEach((t) => s += `<text x="0" y="${Y(t) + 3.5}" font-size="10.5" font-weight="600" fill="rgba(255,255,255,.92)" font-family="Geist Mono">${t}K</text>`);
   WV.forEach((x, i) => {
     const X = 24 + i * (bw + gap);
     const today = i === WV.length - 1;
     s += `<rect x="${X}" y="${Y(max)}" width="${bw}" height="${Hh - pb - Y(max)}" rx="${bw / 2}" fill="rgba(0,0,0,.28)"/>
       <rect class="sb" x="${X}" y="${Hh - pb}" width="${bw}" height="0" rx="${bw / 2}" fill="${today ? ACC : '#fff'}" data-y="${Y(x)}" data-h="${Hh - pb - Y(x)}" style="transition:y .8s var(--ease) ${i * 70}ms,height .8s var(--ease) ${i * 70}ms"/>
-      <text x="${X + bw / 2}" y="${Hh - 3}" text-anchor="middle" font-size="10" fill="${today ? '#fff' : T3}" font-family="Geist Mono">${WK[i]}</text>
+      <text x="${X + bw / 2}" y="${Hh - 3}" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff" font-family="Geist Mono">${WK[i]}</text>
       <rect class="hit" x="${X - 4}" y="0" width="${bw + 8}" height="${Hh}" fill="transparent" data-i="${i}"/>`;
   });
   svg.innerHTML = s;

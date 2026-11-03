@@ -280,7 +280,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
               <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tight text-white">
                 Scan Company Website URL
               </h2>
-              <p className="text-xs sm:text-sm text-[#c4c4c4] mt-1">
+              <p className="text-xs sm:text-sm text-zinc-200 mt-1 font-normal">
                 Enter any company domain to quantify annual revenue leakage across 13 canonical
                 leak categories, SEO/CTA friction, and 30/60/90 remediation.
               </p>
@@ -295,7 +295,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
             >
               <label
                 htmlFor="company-url-input"
-                className="block font-mono text-xs uppercase tracking-wider text-white/90 font-semibold"
+                className="block font-mono text-xs uppercase tracking-wider text-white font-bold"
               >
                 Target Company Website URL
               </label>
@@ -329,7 +329,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
           </div>
 
           <div className="pt-3 border-t border-white/15 flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-[#bdbdbd] mr-1">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-300 font-bold mr-1">
               1-Click Targets:
             </span>
             {[
@@ -370,7 +370,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
               <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tight text-white">
                 Scan LinkedIn / Executive URL
               </h2>
-              <p className="text-xs sm:text-sm text-[#c4c4c4] mt-1">
+              <p className="text-xs sm:text-sm text-zinc-200 mt-1 font-normal">
                 Multi-vector LinkedIn &amp; public OSINT scraper. Maps Communication DNA, Thinking
                 Core Graph, MBTI Hypothesis, ACH Casebook, and Opening Pitch.
               </p>
@@ -386,14 +386,14 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="person-url-input"
-                  className="block font-mono text-xs uppercase tracking-wider text-white/90 font-semibold"
+                  className="block font-mono text-xs uppercase tracking-wider text-white font-bold"
                 >
                   LinkedIn or Executive Profile URL
                 </label>
                 <button
                   type="button"
                   onClick={() => setShowBioInput((s) => !s)}
-                  className="font-mono text-[11px] text-[#bdbdbd] hover:text-white underline cursor-pointer"
+                  className="font-mono text-[11px] text-zinc-300 hover:text-white underline cursor-pointer font-semibold"
                 >
                   {showBioInput ? '− Hide Pasted Bio Notes' : '+ Add Optional Bio / Post Text'}
                 </button>
@@ -439,7 +439,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
           </div>
 
           <div className="pt-3 border-t border-white/15 flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-[#bdbdbd] mr-1">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-300 font-bold mr-1">
               1-Click Profiles:
             </span>
             {[
@@ -581,7 +581,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                 <span>BENCHMARK VISUAL BENTO · DISCFLO CORPORATION ($1.38M–$1.66M)</span>
               </span>
             </div>
-            <span className="font-mono text-xs text-[#9a9a9a]">
+            <span className="font-mono text-xs text-zinc-200 font-medium">
               Interactive SVG Stream · Allocation Gauge · Cash Flow Waves
             </span>
           </div>
@@ -614,77 +614,42 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                     {goldenDossier.companyName} <span className="soft">×</span>{' '}
                     {personScan.personName}
                   </h2>
-                  <p className="font-mono text-xs text-[#9a9a9a] mt-1">
+                  <p className="font-mono text-xs text-zinc-200 font-medium mt-1">
                     Organization Exposure: {formatUSD(goldenDossier.totalAnnualLow)} –{' '}
                     {formatUSD(goldenDossier.totalAnnualHigh)}/yr ({goldenDossier.pricedLeaksCount}{' '}
                     Priced Leaks) · Executive Target: {personScan.inferredRoleTitle} (Ask Intros
                     Match: {personScan.askIntrosExecution.matchResult.score}/100)
                   </p>
                 </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveDeepDive((d) => (d === 'graph' ? 'none' : 'graph'))
-                    }
-                    className="btn-skeu"
-                  >
-                    <span className="dot" />
-                    <span>
-                      {activeDeepDive === 'graph'
-                        ? 'Hide Evidence Graph'
-                        : 'Expand Shared Evidence Graph'}
-                    </span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveDeepDive((d) => (d === 'askintros' ? 'none' : 'askintros'))
-                    }
-                    className="btn-skeu"
-                  >
-                    <span>
-                      {activeDeepDive === 'askintros'
-                        ? 'Hide Ask Intros Calculator'
-                        : 'Expand Ask Intros Calculator'}
-                    </span>
-                  </button>
-                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 font-mono text-xs">
-                <div className="p-4 rounded border border-white/10 bg-[#070707] space-y-1.5">
-                  <div className="text-[10px] uppercase tracking-widest text-[#9a9a9a]">
-                    01 // WHY THEM (ROLE FIT)
-                  </div>
-                  <div className="text-white leading-relaxed">
-                    {personScan.askIntrosExecution.butlerMeetingBrief.whyThem}
-                  </div>
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-zinc-200 font-medium leading-relaxed">
+                  We have mapped your inquiry-to-booking gap. Below is the diagnostic scan.
+                </p>
+              </div>
+
+              {/* Simplified Actionable Options */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <div className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors">
+                  <h4 className="text-white font-bold mb-2">3 Simple Fixed-Price Implementation Tiers</h4>
+                  <p className="text-sm text-zinc-300 mb-4 leading-relaxed">
+                    Choose from 3 simple tiers ($2,499 Single Bridge, $4,999 Connected Stack, or $9,999 Co-CEO OS) to build custom automated bridges between your existing tools—with a 100% money-back delivery guarantee.
+                  </p>
+                  <a href="#pricing" className="text-emerald-400 font-bold hover:underline inline-flex items-center gap-1 font-mono text-xs">
+                    <span>View 3 Simple Tiers ($2,499 / $4,999 / $9,999)</span>
+                    <span>→</span>
+                  </a>
                 </div>
-                <div className="p-4 rounded border border-white/10 bg-[#070707] space-y-1.5">
-                  <div className="text-[10px] uppercase tracking-widest text-[#9a9a9a]">
-                    02 // WHY YOU (PROOF ASSET)
-                  </div>
-                  <div className="text-white leading-relaxed">
-                    {personScan.askIntrosExecution.butlerMeetingBrief.whyYou}
-                  </div>
-                </div>
-                <div className="p-4 rounded border border-white/10 bg-[#070707] space-y-1.5">
-                  <div className="text-[10px] uppercase tracking-widest text-[#9a9a9a]">
-                    03 // WHY NOW (TIMING WINDOW)
-                  </div>
-                  <div className="text-white leading-relaxed">
-                    {personScan.askIntrosExecution.butlerMeetingBrief.whyNow}
-                  </div>
-                </div>
-                <div className="p-4 rounded border border-white/10 bg-[#070707] space-y-1.5">
-                  <div className="text-[10px] uppercase tracking-widest text-[#9a9a9a]">
-                    04 // FIRST MEETING OBJECTIVE
-                  </div>
-                  <div className="text-white leading-relaxed">
-                    {personScan.askIntrosExecution.butlerMeetingBrief.firstMeetingObjective}
-                  </div>
+                <div className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors">
+                  <h4 className="text-white font-bold mb-2">Configure Your Tools &amp; Workflows</h4>
+                  <p className="text-sm text-zinc-300 mb-4 leading-relaxed">
+                    Select the exact apps your business currently runs (ServiceTitan, Jobber, Twilio, Webflow, Google) in our self-serve scope engine for an instant, verified quote.
+                  </p>
+                  <a href="#quote-builder" className="text-emerald-400 font-bold hover:underline inline-flex items-center gap-1 font-mono text-xs">
+                    <span>Configure in Quote Builder</span>
+                    <span>→</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -702,7 +667,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                     <h2 className="font-display text-4xl sm:text-5xl uppercase tracking-tight text-white mt-1">
                       {goldenDossier.companyName}
                     </h2>
-                    <div className="font-mono text-xs text-[#9a9a9a] mt-1">
+                    <div className="font-mono text-xs text-zinc-200 mt-1 font-medium">
                       {companyScan.industry} · {goldenDossier.pricedLeaksCount} Uniquely Priced
                       Leaks · {goldenDossier.detectedFindingsCount} Findings ·{' '}
                       {goldenDossier.weightedSignalsCount} Weighted Signals
@@ -710,7 +675,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                   </div>
 
                   <div className="text-left sm:text-right font-mono">
-                    <div className="text-xs uppercase tracking-wider text-rose-400">
+                    <div className="text-xs uppercase tracking-wider text-rose-300 font-semibold">
                       Total Annual Revenue Loss (Ledger v6)
                     </div>
                     <div className="metric text-rose-400 mt-1 tabular-nums" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
@@ -723,47 +688,135 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                 {/* Key Financial Summary Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 font-mono">
                   <div className="p-4 rounded border border-white/10 bg-[#070707]">
-                    <div className="text-xs text-[#9a9a9a]">Top 10 Active Leaks</div>
+                    <div className="text-xs text-zinc-300 font-semibold">Top 10 Active Leaks</div>
                     <div className="text-lg font-bold text-white tabular-nums mt-1">
                       {formatUSD(goldenDossier.top10SubtotalLow)} –{' '}
                       {formatUSD(goldenDossier.top10SubtotalHigh)}
                     </div>
-                    <div className="text-[11px] text-[#9a9a9a] mt-0.5">
+                    <div className="text-[11px] text-zinc-300 mt-0.5">
                       #1 Owner &amp; Capacity: {goldenDossier.top10Leaks[0]?.rangeLabel}
                     </div>
                   </div>
 
                   <div className="p-4 rounded border border-white/10 bg-[#070707]">
-                    <div className="text-xs text-[#9a9a9a]">Remaining 3 Priced Leaks</div>
+                    <div className="text-xs text-zinc-300 font-semibold">Remaining 3 Priced Leaks</div>
                     <div className="text-lg font-bold text-white tabular-nums mt-1">
                       {formatUSD(goldenDossier.remainderSubtotalLow)} –{' '}
                       {formatUSD(goldenDossier.remainderSubtotalHigh)}
                     </div>
-                    <div className="text-[11px] text-[#9a9a9a] mt-0.5">
+                    <div className="text-[11px] text-zinc-300 mt-0.5">
                       Authority, CTA &amp; Proof Leaks
                     </div>
                   </div>
 
                   <div className="p-4 rounded border border-white/10 bg-[#070707]">
-                    <div className="text-xs text-[#9a9a9a]">Modeled Net Profit Bridge</div>
+                    <div className="text-xs text-zinc-300 font-semibold">Modeled Net Profit Bridge</div>
                     <div className="text-lg font-bold text-white tabular-nums mt-1">
                       {formatUSD(companyScan.profitBridgeSummary.bridge.netEconomicBenefit)} (
                       {companyScan.profitBridgeSummary.bridge.roiPercent}% ROI)
                     </div>
-                    <div className="text-[11px] text-[#9a9a9a] mt-0.5">
+                    <div className="text-[11px] text-zinc-300 mt-0.5">
                       Accrual-consistent contribution
                     </div>
                   </div>
 
                   <div className="p-4 rounded border border-white/10 bg-[#070707]">
-                    <div className="text-xs text-[#9a9a9a]">DOM &amp; Schema Signals</div>
+                    <div className="text-xs text-zinc-300 font-semibold">DOM &amp; Schema Signals</div>
                     <div className="text-lg font-bold text-white tabular-nums mt-1">
                       Grade {goldenDossier.overallGrade} ({goldenDossier.overallFrictionScore}/100)
                     </div>
-                    <div className="text-[11px] text-[#9a9a9a] mt-0.5">
+                    <div className="text-[11px] text-zinc-300 mt-0.5">
                       {companyScan.liveDomSignals.formsDetected} forms ·{' '}
                       {companyScan.liveDomSignals.ctaCount} CTAs · schema: false
                     </div>
+                  </div>
+                </div>
+
+                {/* INQUIRY-TO-BOOKING HANDOFF GAP DIAGNOSTIC (EVIDENCE BOUNDARIES) */}
+                <div className="p-5 rounded-2xl border border-white/15 bg-[#0a0a0a] space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="badge">
+                        <i></i>
+                        <span>INQUIRY-TO-BOOKING HANDOFF AUDIT · EVIDENCE BOUNDARIES</span>
+                      </span>
+                    </div>
+                    <span className="font-mono text-xs text-zinc-200 font-semibold">
+                      Verified Public Findings vs Access-Gated Internal Hypotheses
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Confirmed Issue Card */}
+                    <div className="p-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 space-y-2">
+                      <div className="flex items-center justify-between font-mono text-xs">
+                        <span className="text-emerald-300 font-bold uppercase tracking-wider">
+                          [CONFIRMED ISSUE]
+                        </span>
+                        <span className="text-zinc-200 font-semibold">Public DOM</span>
+                      </div>
+                      <div className="text-sm font-bold text-white">
+                        Inquiry Form Lacks Immediate SMS Dispatch Trigger
+                      </div>
+                      <div className="text-xs text-zinc-100 leading-relaxed font-normal">
+                        <strong className="text-white font-bold">Operational Consequence:</strong> Inbound leads route to generic email inboxes with no automated SMS receipt, leaving customers to call competing contractors while waiting for human review.
+                      </div>
+                      <div className="pt-2 text-[11px] font-mono text-emerald-300 font-semibold">
+                        Fix Eligible: Single Fix ($499 one-time)
+                      </div>
+                    </div>
+
+                    {/* Suspected Issue Card */}
+                    <div className="p-4 rounded-xl border border-amber-500/40 bg-amber-500/10 space-y-2">
+                      <div className="flex items-center justify-between font-mono text-xs">
+                        <span className="text-amber-300 font-bold uppercase tracking-wider">
+                          [SUSPECTED ISSUE]
+                        </span>
+                        <span className="text-zinc-200 font-semibold">Corroboration Needed</span>
+                      </div>
+                      <div className="text-sm font-bold text-white">
+                        After-Hours Emergency Inquiry Delay
+                      </div>
+                      <div className="text-xs text-zinc-100 leading-relaxed font-normal">
+                        <strong className="text-white font-bold">Operational Consequence:</strong> Website promotes 24/7 service, but contact endpoints lack on-call technician notification webhooks. Inquiries submitted after 5 PM sit until next morning.
+                      </div>
+                      <div className="pt-2 text-[11px] font-mono text-amber-300 font-semibold">
+                        Corroborate: Free Initial Scan Check
+                      </div>
+                    </div>
+
+                    {/* Needs Access Card */}
+                    <div className="p-4 rounded-xl border border-sky-500/40 bg-sky-500/10 space-y-2">
+                      <div className="flex items-center justify-between font-mono text-xs">
+                        <span className="text-sky-300 font-bold uppercase tracking-wider">
+                          [NEEDS ACCOUNT ACCESS]
+                        </span>
+                        <span className="text-zinc-200 font-semibold">Read-Only Required</span>
+                      </div>
+                      <div className="text-sm font-bold text-white">
+                        Missed Call Drop-Off &amp; Estimate Follow-Up
+                      </div>
+                      <div className="text-xs text-zinc-100 leading-relaxed font-normal">
+                        <strong className="text-white font-bold">Operational Consequence:</strong> Public scans cannot prove phone turnaround or CRM estimate drop-off without read-only access to Jobber, ServiceTitan, or Twilio logs.
+                      </div>
+                      <div className="pt-2 text-[11px] font-mono text-sky-300 font-semibold">
+                        Boundary: Never assume without token
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-zinc-200">
+                    <span className="font-medium">Need to bridge these handoff gaps without changing your CRM?</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const el = document.getElementById('quote-builder');
+                        el?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-white font-bold underline hover:text-zinc-300 cursor-pointer"
+                    >
+                      Wire This Fix in Autonomous Quote Builder →
+                    </button>
                   </div>
                 </div>
 
@@ -860,7 +913,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                           <span>FORENSIC VISUAL BENTO · NET EXPOSURE &amp; FLOW CHARTS</span>
                         </span>
                       </div>
-                      <span className="font-mono text-xs text-[#9a9a9a]">
+                      <span className="font-mono text-xs text-zinc-200 font-semibold">
                         Interactive SVG Graphs · Allocation Gauge · Cash Flow Waves · Weekly Telemetry
                       </span>
                     </div>
@@ -898,7 +951,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                     <h2 className="font-display text-4xl sm:text-5xl uppercase tracking-tight text-white mt-1">
                       {personScan.personName}
                     </h2>
-                    <div className="font-mono text-xs text-[#9a9a9a] mt-1">
+                    <div className="font-mono text-xs text-zinc-200 font-medium mt-1">
                       {personScan.inferredRoleTitle} · {personScan.stats.extractedSignalsCount}{' '}
                       Signals · Confidence: {personScan.stats.systemConfidenceLabel} (
                       {personScan.stats.systemConfidenceScore}/100)
@@ -906,7 +959,7 @@ export const UrlScannerCommandView: React.FC<UrlScannerCommandViewProps> = ({
                   </div>
 
                   <div className="text-left sm:text-right font-mono">
-                    <div className="text-xs uppercase tracking-wider text-[#9a9a9a]">
+                    <div className="text-xs uppercase tracking-wider text-zinc-200 font-semibold">
                       Ask Intros Match Score
                     </div>
                     <div className="metric text-white mt-1 tabular-nums" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
